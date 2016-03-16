@@ -1,0 +1,20 @@
+section#carrier table{
+    width: 100%;
+    /*color: white;*/
+}
+
+section#carrier h2{
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 40px;
+}
+
+section#carrier td, section#carrier th{
+    border: 1px solid;
+    padding: 5px;
+}
+
+section#carrier{
+    /*background-color: #222;*/
+    background-color: white;
+}
