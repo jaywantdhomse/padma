@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317121516) do
+ActiveRecord::Schema.define(version: 20160317165001) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -56,5 +56,13 @@ ActiveRecord::Schema.define(version: 20160317121516) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vacancies", force: true do |t|
+    t.string   "post"
+    t.string   "experience"
+    t.string   "skills"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

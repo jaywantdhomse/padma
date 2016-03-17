@@ -17,13 +17,13 @@ class DevisesessionController < Devise::SessionsController
           #resource.ensure_authentication_token!  #make sure the user has a token generated
           if(resource.confirmed_at.nil?)
             #unconfirmed login
-            render:json => {:success => false, :errors => ["Invalid username or password."]}
+            render:json => {:success => false, :errors => ["Account not activated, Please activate account."]}
             return
           end
           render :json => { :success => true }
         return
       else
-        render :json => {:success => false}
+        render :json => {:success => false, :errors => ["Invalid username or password."]}
       end    
     #if(params[:mc_user][:is_mc_app].present? && params[:mc_user][:is_mc_app] == "true")
     #  resource = McUser.find_for_database_authentication(:email => params[:mc_user][:email])
@@ -56,7 +56,7 @@ class DevisesessionController < Devise::SessionsController
   def invalid_login_attempt
       warden.custom_failure!
       render :json => { :errors => ["Invalid email or password."], :success => false }  
-  end  
+  end
   
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))

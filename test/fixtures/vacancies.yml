@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: MyString
+  experience: MyString
+  skills: MyString
+
+two:
+  post: MyString
+  experience: MyString
+  skills: MyString

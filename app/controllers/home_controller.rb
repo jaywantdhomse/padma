@@ -5,5 +5,7 @@ class HomeController < ApplicationController
 	@categories = Category.all
 	@product = Product.new
 	@products = Product.all
+	@vacancy = Vacancy.new
+	@vacancies = Vacancy.all
   end
 end

@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.save
-    redirect_to "#"
+    redirect_to root_url
   end
 
   def update

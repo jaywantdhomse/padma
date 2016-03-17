@@ -1,0 +1,13 @@
+<%= simple_form_for(@vacancy) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :post %>
+    <%= f.input :experience %>
+    <%= f.input :skills %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

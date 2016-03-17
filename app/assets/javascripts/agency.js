@@ -52,12 +52,16 @@ $(".add_product").click(function() {
 $(".check_all_category").click(function() {
     $("#check_all_categoryModal").modal("show");
 });
+$(".vacancy").click(function() {
+    $("#vacancyModal").modal("show");
+});
 
 $("form#user_signup").submit(function() {
     var empty_textboxes = [];
     var invalid_emails = [];
     var invalid_numeric_fields = [];
     var non_numeric_fields = [];
+    var password_not_matched = [];
     var user_form = $("form#user_signup");
     var form_valid = true;
     
@@ -92,7 +96,13 @@ $("form#user_signup").submit(function() {
             form_valid = false;
             invalid_emails.push(label); 
         }
-    });    
+    });  
+    var password = $("input#password", user_form).val();
+    var confirm_password = $("input#confirm_password", user_form).val();
+    if(password != confirm_password){
+    	form_valid = false;
+        password_not_matched.push("\n\nPassword and confirm password does not match.");
+    }  
     
     if(form_valid == true){
         $.ajax({
@@ -113,7 +123,7 @@ $("form#user_signup").submit(function() {
                         alert($("form#user_signup #user_email").val() + " " +data["error"]["email"]);
                     }
                 }else{
-                    
+                    $("#signup_success").text("Signup Successful");
                 }
              }
          });        
@@ -132,11 +142,10 @@ $("form#user_signup").submit(function() {
         if (invalid_emails.length > 0) {
             new_msg += "\n\nPlease provide a valid address for " + invalid_emails.join(" and ") + ".";
         }
-        var password = $("input#password", user_form).val();
-        var confirm_password = $("input#confirm_password", user_form).val();
-        if(password != confirm_password){
-            new_msg += "\n\nPassword and confirm password does not match."
+        if (password_not_matched.length > 0) {
+        	new_msg += password_not_matched[0];
         }
+        
         alert(new_msg);
     }
     return false;
@@ -156,6 +165,10 @@ $("form#user_login").submit(function() {
             },
             complete: function() {             
             },
+            error: function (xhr, ajaxOptions, thrownError) {
+				//alert(xhr.status);
+				alert(thrownError);
+			  },
             success: function(data){
                 console.log(data);
                 if(data['success'] == true){
