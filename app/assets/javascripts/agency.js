@@ -43,6 +43,15 @@ $('.navbar-collapse ul li a').click(function() {
 $(".login").click(function() {
     $("#loginModal").modal("show");
 });
+$(".category").click(function() {
+    $("#categoryModal").modal("show");
+});
+$(".add_product").click(function() {
+    $("#add_productModal").modal("show");
+});
+$(".check_all_category").click(function() {
+    $("#check_all_categoryModal").modal("show");
+});
 
 $("form#user_signup").submit(function() {
     var empty_textboxes = [];

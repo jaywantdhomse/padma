@@ -39,3 +39,4 @@ gem 'spring',        group: :development
 gem 'mysql2'
 gem 'pg'
 gem 'devise'
+gem 'simple_form'
