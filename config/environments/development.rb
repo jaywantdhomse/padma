@@ -42,9 +42,9 @@ config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
-  :domain               => 'mail.zerebral.co.in',
-  :user_name            => 'aulison@zerebral.co.in',
-  :password             => '@ulis0n1989',
+  :domain               => 'mail.gmail.com',
+  :user_name            => 'suvidhinathpadma@gmail.com',
+  :password             => 'padma123456',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
 end
