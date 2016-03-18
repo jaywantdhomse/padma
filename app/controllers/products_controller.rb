@@ -35,6 +35,11 @@ class ProductsController < ApplicationController
     @product.destroy
     respond_with(@product)
   end
+  
+  def show_category_products
+  	products = Product.where(:category_id => params["category_id"])
+  	render :json => {"products" => products}
+  end
 
   private
     def set_product

@@ -50,7 +50,51 @@ $(".add_product").click(function() {
     $("#add_productModal").modal("show");
 });
 $(".check_all_category").click(function() {
-    $("#check_all_categoryModal").modal("show");
+    $("#portfolioModal4").modal("show");
+    var category_id = $(this).attr("data-id");
+    var category_name = $(this).attr("data-name");
+    $.ajax({
+             type: "POST",
+             url: "show_category_products",
+             dataType: "json",
+             data: {
+             	category_id: category_id
+             },
+             beforeSend: function(){
+				$("#portfolioModal4").find("div.modal-body").html("<img src='/assets/loading.gif'>");
+             },
+             complete: function() {
+				
+             },
+             success: function(data){
+             	console.log(data);
+             	var html = "";
+             	var is_closed = false;
+             	for(var i=0; i<data["products"].length; i++){
+             		if(i % 4 == 0){
+             			html += "<div class='row'>";
+             		}
+		         	html += "<div class='col-md-3 col-sm-6'>"+
+		                        	"<img class='img-responsive' src='/assets/startup-framework.png' />"+
+		                        	"<div>Name:"+data["products"][i]["name"]+"</div>"+
+		                        	"<div>Category:"+category_name+"</div>"+
+		                        	"<div>Model:"+data["products"][i]["model"]+"</div>"+
+		                        	"<div>Price:"+data["products"][i]["price"]+"</div>"+
+		                        	"<div>Description:"+data["products"][i]["description"]+"</div>"+
+		                        	"<button class='btn btn-primary'>Order Online</button>"+
+                        	"</div>";
+		            if(i != 0 && i % 3 == 0){
+						html += "</div>";
+						is_closed = true;
+             		}
+                } 
+                if(!is_closed){
+                	html += "</div>";
+                }
+                $("#portfolioModal4").find("div.modal-body").html(html);
+             }
+         });
+         
 });
 $(".vacancy").click(function() {
     $("#vacancyModal").modal("show");
