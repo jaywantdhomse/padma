@@ -82,6 +82,7 @@ $(".check_all_category").click(function() {
 		                        	"<div>Price:"+data["products"][i]["price"]+"</div>"+
 		                        	"<div>Description:"+data["products"][i]["description"]+"</div>"+
 		                        	"<button onclick='order_now(this)' data-id='"+data["products"][i]["id"]+"' class='btn btn-primary'>Order Online</button>"+
+		                        	"<div class='order_msg' style='color:green;'></div>"+
                         	"</div>";
 		            if(i != 0 && i % 3 == 0){
 						html += "</div>";
@@ -116,7 +117,7 @@ function order_now(ctrl){
 				
              },
              success: function(data){
-             	
+             	$(ctrl).closest("div").find("div.order_msg").text("Order Placed Successfully.");
              }
          });
 }
