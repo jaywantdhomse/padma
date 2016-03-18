@@ -2,11 +2,37 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
+    <div><%= f.input :name %></div>
+    <div><%= f.input :description %></div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit 'Add Category', :class => 'submit_category' %>
   </div>
 <% end %>
+
+<style>
+	.input{
+		width:100%;
+	}
+	#category_name{
+		width:60%;
+		float:right;
+	}
+	
+	#category_description{
+		width:60%;
+		float:right;
+	}
+	.submit_category{
+		background-color: #fed136;
+		border-color: #fed136;
+		border-radius: 3px;
+		color: #fff;
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 15px;
+		font-weight: 700;
+		padding: 8px 10px;
+		text-transform: uppercase;
+	}
+</style>

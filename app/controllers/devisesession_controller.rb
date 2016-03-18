@@ -63,7 +63,7 @@ class DevisesessionController < Devise::SessionsController
     set_flash_message :notice, :signed_out if signed_out && is_flashing_format?
 #    redirect_to root_url       
     yield if block_given?
-    respond_to_on_destroy    
+    respond_to_on_destroy
       # expire auth token
       #@user = User.where(:authentication_token=>params[:auth_token]).first
       #@user.reset_authentication_token!

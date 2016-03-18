@@ -3,6 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <label class="string optional" for="product_name">Category</label>
     <%= f.collection_select :category_id, Category.all, :id, :name, :prompt => 'Select One' %>
     <%= f.input :model %>
     <%= f.input :price %>
@@ -11,6 +12,34 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit 'Add Product', :class => 'submit_product' %>
   </div>
 <% end %>
+
+<style>
+
+	.input{
+		width:100%;
+	}
+	#product_name{
+		width:60%;
+		float:right;
+	}
+	
+	#product_model, #product_price, #product_description, #product_category_id {
+		width:60%;
+		float:right;
+	}
+	
+	.submit_product{
+		background-color: #fed136;
+		border-color: #fed136;
+		border-radius: 3px;
+		color: #fff;
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 15px;
+		font-weight: 700;
+		padding: 8px 10px;
+		text-transform: uppercase;
+	}
+</style>

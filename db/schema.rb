@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317165001) do
+ActiveRecord::Schema.define(version: 20160318103526) do
+
+  create_table "applicants", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "apply_for"
+    t.string   "email"
+    t.integer  "phone"
+    t.string   "current_organization"
+    t.string   "current_profile"
+    t.text     "upload_cv"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"

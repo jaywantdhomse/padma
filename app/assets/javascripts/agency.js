@@ -123,7 +123,7 @@ $("form#user_signup").submit(function() {
                         alert($("form#user_signup #user_email").val() + " " +data["error"]["email"]);
                     }
                 }else{
-                    $("#signup_success").text("Signup Successful");
+                    $("#signup_success").text("You have Signup Successfully.");
                 }
              }
          });        
@@ -177,7 +177,7 @@ $("form#user_login").submit(function() {
                     if(data["errors"] != undefined && data["errors"] != null){
                         alert(data["errors"]);
                     }else{
-                        alert("Account not activated.");
+                        alert("Account not activated, please activate using your email account.");
                     }
                 }
             }

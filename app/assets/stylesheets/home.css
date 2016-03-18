@@ -18,3 +18,18 @@ section#carrier{
     /*background-color: #222;*/
     background-color: white;
 }
+
+.add_button .submit_category{
+	border-radius: 3px;
+	background-color: grey;
+	border-color: black;
+	border-radius: 3px; 
+	float:right; 
+	color: #fff; 
+	font-family: Montserrat; 
+	font-size: 14px; 
+	font-weight: 800; 
+	padding: 8px 21px 10px 12px; 
+	text-transform: uppercase; 
+	margin-bottom:10px;
+}
