@@ -81,7 +81,7 @@ $(".check_all_category").click(function() {
 		                        	"<div>Model:"+data["products"][i]["model"]+"</div>"+
 		                        	"<div>Price:"+data["products"][i]["price"]+"</div>"+
 		                        	"<div>Description:"+data["products"][i]["description"]+"</div>"+
-		                        	"<button class='btn btn-primary'>Order Online</button>"+
+		                        	"<button onclick='order_now(this)' data-id='"+data["products"][i]["id"]+"' class='btn btn-primary'>Order Online</button>"+
                         	"</div>";
 		            if(i != 0 && i % 3 == 0){
 						html += "</div>";
@@ -99,6 +99,30 @@ $(".check_all_category").click(function() {
 $(".vacancy").click(function() {
     $("#vacancyModal").modal("show");
 });
+
+function order_now(ctrl){
+	var product_id = $(ctrl).attr("data-id");
+	$.ajax({
+             type: "POST",
+             url: "order_product",
+             dataType: "json",
+             data: {
+             	product_id: product_id
+             },
+             beforeSend: function(){
+
+             },
+             complete: function() {
+				
+             },
+             success: function(data){
+             	
+             }
+         });
+}
+
+
+
 
 $("form#user_signup").submit(function() {
     var empty_textboxes = [];

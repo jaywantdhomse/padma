@@ -40,6 +40,12 @@ class ProductsController < ApplicationController
   	products = Product.where(:category_id => params["category_id"])
   	render :json => {"products" => products}
   end
+  
+  def order_product
+  	product = Product.find(params["product_id"])
+  	ApplicantMailer.order_email(current_user, product).deliver
+  	render :json => {}
+  end
 
   private
     def set_product

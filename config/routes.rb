@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registration", :sessions => "devisesession", :passwords => 'passwords', :confirmations => "confirmation"}
   
   match "show_category_products" => "products#show_category_products", via: [:get, :post]
+  match "order_product" => "products#order_product", via: [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
