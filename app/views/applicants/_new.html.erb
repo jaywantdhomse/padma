@@ -1,14 +1,14 @@
 <div>
   <h1>Apply Online</h1>
   <%= simple_form_for @applicant, :html => {:class => 'form-horizontal' } do |f| %>
-    <div class="text-padd"><%= f.input :first_name, :input_html => { :value => "First Name", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :last_name, :input_html => { :value => "Last Name", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :apply_for, :input_html => { :value => "Apply For", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :email, :input_html => { :value => "Email", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :phone, :input_html => { :value => "Phone", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :current_organization, :input_html => { :value => "Current Organization", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :current_profile, :input_html => { :value => "Current Profile", :class => "form-control" }, label: false %></div>
-    <div class="text-padd"><%= f.input :upload_cv, :input_html => { :value => "Upload CV", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :first_name, :placeholder => "Enter Your First Name", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :last_name, :placeholder => "Enter Your Last Name", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :apply_for, :placeholder => "Applying For Position", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :email, :placeholder => "Your Email", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :phone, :placeholder => "Your Phone", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :current_organization, :placeholder => "Current Organization", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :current_profile, :placeholder => "Current Profile", :input_html => { :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :upload_cv, :placeholder => "Upload CV", :input_html => { :class => "form-control" }, label: false %></div>
     <div class="form-actions">
       <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
     </div>
