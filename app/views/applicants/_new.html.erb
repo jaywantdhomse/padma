@@ -1,17 +1,23 @@
-<div class="container">
+<div>
   <h1>Apply Online</h1>
   <%= simple_form_for @applicant, :html => {:class => 'form-horizontal' } do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :apply_for %>
-    <%= f.input :email %>
-    <%= f.input :phone %>
-    <%= f.input :current_organization %>
-    <%= f.input :current_profile %>
-    <%= f.input :upload_cv %>
+    <div class="text-padd"><%= f.input :first_name, :input_html => { :value => "First Name", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :last_name, :input_html => { :value => "Last Name", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :apply_for, :input_html => { :value => "Apply For", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :email, :input_html => { :value => "Email", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :phone, :input_html => { :value => "Phone", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :current_organization, :input_html => { :value => "Current Organization", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :current_profile, :input_html => { :value => "Current Profile", :class => "form-control" }, label: false %></div>
+    <div class="text-padd"><%= f.input :upload_cv, :input_html => { :value => "Upload CV", :class => "form-control" }, label: false %></div>
     <div class="form-actions">
       <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
     </div>
   <% end %>
 </div>
+
+<style>
+	.text-padd{
+		padding: 3px;
+	}
+</style>
 
