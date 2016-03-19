@@ -17,10 +17,21 @@ class HomeController < ApplicationController
   	render :json => {}
   end
   
+  def distributor_complaint
+  	distributor_complaint = DistributorComplaint.new(distributor_complaint_params)
+  	distributor_complaint.save
+  	ApplicantMailer.distributor_complaint_email(distributor_complaint).deliver
+  	render :json => {}
+  end
+  
   private
 
   def contact_params
     params.require(:contact_us).permit(:name, :phone, :email, :city, :address, :pincode, :message)
   end 
+  
+  def distributor_complaint_params
+    params.require(:distributor_complaint).permit(:by, :name, :email, :phone, :city, :address, :pincode, :product, :model, :complaint)
+  end
   
 end

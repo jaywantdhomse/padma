@@ -331,3 +331,155 @@ $("form#contactForm").submit(function() {
     }
     return false;
 });
+
+
+$("form#distributorForm").submit(function() {
+    var empty_textboxes = [];
+    var invalid_emails = [];
+    var invalid_numeric_fields = [];
+    var non_numeric_fields = [];
+    var distributor_complaint_form = $("form#distributorForm");
+    var form_valid = true;
+    
+    $("input[type=text]", distributor_complaint_form).each(function(){
+       var value = $.trim($(this).val());
+       if(value == "") {
+            var label = get_label(this);
+            form_valid = false;
+            empty_textboxes.push(label);
+       }
+    });
+    //phone number
+    $('input#phone', distributor_complaint_form).each(function() {
+        var value = $.trim($(this).val());
+        var label = get_label(this);
+        if(value.length > 0 && !value.match(/^[0-9]+$/)) {
+            form_valid = false;
+            non_numeric_fields.push(label);
+        }else{
+            if(value.length != 10){
+                form_valid = false;
+                invalid_numeric_fields.push(label);
+            }
+        }
+    });
+    
+    $("input#email", distributor_complaint_form).each(function(){       
+        var value = $(this).val();
+        var label = get_label(this);
+        if(!valid_email(value)) {
+            form_valid = false;
+            invalid_emails.push(label); 
+        }
+    });  
+    if(form_valid == true){
+        $.ajax({
+             type: "POST",
+             url: $("form#distributorForm").attr("action"),
+             data: $("form#distributorForm").serialize(),
+             beforeSend: function(){
+
+             },
+             complete: function() {           
+
+             },
+             success: function(data){
+                distributor_complaint_form.find("div#success").text("Distributor Complaint send successfully.")
+             }
+         });        
+    }else{
+        $(".error_msg").text("");
+        var new_msg = "Could not proceed with Complaint.";
+        if (empty_textboxes.length > 0) {
+            new_msg += "\n\nPlease provide value for following fields:\n" + empty_textboxes.join(", ") + ".";
+        }
+        if(invalid_numeric_fields.length > 0){
+            new_msg += "\n\nPlease provide valid values for " + invalid_numeric_fields.join(" and ") + ".";
+        }
+        if (non_numeric_fields.length > 0) {
+            new_msg += "\n\nPlease provide a valid number for " + non_numeric_fields.join(", ") + ".";
+        }         
+        if (invalid_emails.length > 0) {
+            new_msg += "\n\nPlease provide a valid address for " + invalid_emails.join(" and ") + ".";
+        }
+        
+        alert(new_msg);
+    }
+    return false;
+});
+
+
+$("form#applicantForm").submit(function() {
+    var empty_textboxes = [];
+    var invalid_emails = [];
+    var invalid_numeric_fields = [];
+    var non_numeric_fields = [];
+    var applicant_form = $("form#applicantForm");
+    var form_valid = true;
+    
+    $("input[type=text]", applicant_form).each(function(){
+       var value = $.trim($(this).val());
+       if(value == "") {
+            var label = get_label(this);
+            form_valid = false;
+            empty_textboxes.push(label);
+       }
+    });
+    //phone number
+    $('input#phone', applicant_form).each(function() {
+        var value = $.trim($(this).val());
+        var label = get_label(this);
+        if(value.length > 0 && !value.match(/^[0-9]+$/)) {
+            form_valid = false;
+            non_numeric_fields.push(label);
+        }else{
+            if(value.length != 10){
+                form_valid = false;
+                invalid_numeric_fields.push(label);
+            }
+        }
+    });
+    
+    $("input#email", applicant_form).each(function(){       
+        var value = $(this).val();
+        var label = get_label(this);
+        if(!valid_email(value)) {
+            form_valid = false;
+            invalid_emails.push(label); 
+        }
+    });  
+    if(form_valid == true){
+        $.ajax({
+             type: "POST",
+             url: $("form#applicantForm").attr("action"),
+             data: $("form#applicantForm").serialize(),
+             beforeSend: function(){
+
+             },
+             complete: function() {           
+
+             },
+             success: function(data){
+                applicant_form.find("div#success").text("Application send successfully.")
+             }
+         });        
+    }else{
+        $(".error_msg").text("");
+        var new_msg = "Could not proceed with Application.";
+        if (empty_textboxes.length > 0) {
+            new_msg += "\n\nPlease provide value for following fields:\n" + empty_textboxes.join(", ") + ".";
+        }
+        if(invalid_numeric_fields.length > 0){
+            new_msg += "\n\nPlease provide valid values for " + invalid_numeric_fields.join(" and ") + ".";
+        }
+        if (non_numeric_fields.length > 0) {
+            new_msg += "\n\nPlease provide a valid number for " + non_numeric_fields.join(", ") + ".";
+        }         
+        if (invalid_emails.length > 0) {
+            new_msg += "\n\nPlease provide a valid address for " + invalid_emails.join(" and ") + ".";
+        }
+        
+        alert(new_msg);
+    }
+    return false;
+});

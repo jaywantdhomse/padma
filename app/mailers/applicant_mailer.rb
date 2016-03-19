@@ -24,4 +24,12 @@ class ApplicantMailer < ActionMailer::Base
   	@contact_us = contact_us
   	mail(from: @from, to: @to, subject: "Conntact Us ")
   end
+  
+  def distributor_complaint_email(distributor_complaint)
+  	@from = User.where(admin: true)[0]["email"]
+  	@to = User.where(admin: true)[0]["email"]
+  	@distributor_complaint = distributor_complaint
+  	mail(from: @from, to: @to, subject: "Distributors Complaint.")
+  end
+  
 end

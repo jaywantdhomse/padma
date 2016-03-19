@@ -8,10 +8,10 @@ class ApplicantsController < ApplicationController
     if @applicant.save
       flash.now[:error] = nil
       flash.now[:notice] = 'Thank you for your application!'
-      redirect_to root_url
+      render :json => {}
     else
       flash.now[:error] = 'Cannot send application.'
-      redirect_to root_url
+      render :json => {}
     end
   end
   

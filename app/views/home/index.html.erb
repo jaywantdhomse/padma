@@ -201,55 +201,62 @@ that meet the world standards.</h3>
                <div class="col-lg-12">
                   <div class="row">
                     <div class="col-md-6">
-                        <form id="applyForm" >
+                        <form action="distributor_complaint" name="distributor_complaint" id="distributorForm" novalidate >
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="By *" id="apply_for" required data-validation-required-message="By">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                <input type="text" data-lable="By" name="distributor_complaint[by]" class="form-control" placeholder="By *" id="by" required data-validation-required-message="Please enter by">
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                           <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Mobile No *" id="mobile_no" required data-validation-required-message="Please enter your mobile number.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                           <div class="form-group">
-                                <input type="text" class="form-control" placeholder="City *" id="curr_org" required data-validation-required-message="Please enter your city.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                           <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Address *" id="curr_profile" required data-validation-required-message="Please enter your address.">
+                                <input type="text" data-lable="Name" name="distributor_complaint[name]" class="form-control" placeholder="Name *" id="name" required data-validation-required-message="Please enter your name">
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Pin-code *" id="curr_profile" required data-validation-required-message="Please enter pin-code.">
+                                <input type="text" data-lable="Email" name="distributor_complaint[email]" class="form-control" placeholder="Email *" id="email" required data-validation-required-message="Please enter your email">
                                 <p class="help-block text-danger"></p>
                             </div>
+                             <div class="form-group">
+                                <input type="text" data-lable="Phone" name="distributor_complaint[phone]" class="form-control" placeholder="Phone *" id="phone" required data-validation-required-message="Please enter your Phone">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Product *" id="curr_profile" required data-validation-required-message="Please enter your product.">
+                                <input type="text" data-lable="City" name="distributor_complaint[city]" class="form-control" placeholder="City *" id="city" required data-validation-required-message="Please enter your City">
                                 <p class="help-block text-danger"></p>
                             </div>
+                            
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Model *" id="curr_profile" required data-validation-required-message="Please enter product model.">
+                                <input type="text" data-lable="Address" name="distributor_complaint[address]" class="form-control" placeholder="Address *" id="address" required data-validation-required-message="Please enter your address">
                                 <p class="help-block text-danger"></p>
                             </div>
+                            
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Complaint *" id="curr_profile" required data-validation-required-message="Please enter your complaint">
+                                <input type="text" data-lable="Pin code" name="distributor_complaint[pincode]" class="form-control" placeholder="Pin Code *" id="pincode" required data-validation-required-message="Please enter your pincode">
                                 <p class="help-block text-danger"></p>
                             </div>
+                            
+                            <div class="form-group">
+                                <input type="text" data-lable="Product" name="distributor_complaint[product]" class="form-control" placeholder="Product *" id="product" required data-validation-required-message="Please enter your product">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" data-lable="Model" name="distributor_complaint[model]" class="form-control" placeholder="Model *" id="model" required data-validation-required-message="Please enter your model">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" data-lable="Complaint" name="distributor_complaint[complaint]" class="form-control" placeholder="Complaint *" id="complaint" required data-validation-required-message="Please enter your complaint">
+                                <p class="help-block text-danger"></p>
+                            </div>
+
                             <div class="text-center">
-                                <div id="success"></div>
+                                <div id="success" style="color:green"></div>
                                 <button type="submit" class="btn btn-primary">Send</button>
                             </div>                           
                         </form>    
                     </div>
                     <div class="col-md-6">
-                      <img src="/assets/distri.png	" style="width:100%" />
+                      <img src="/assets/distri.png" style="width:100%" />
                     </div>
                   </div>
                </div>
