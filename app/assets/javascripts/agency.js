@@ -255,3 +255,79 @@ $("form#user_login").submit(function() {
     return false;
 });
 
+
+
+$("form#contactForm").submit(function() {
+    var empty_textboxes = [];
+    var invalid_emails = [];
+    var invalid_numeric_fields = [];
+    var non_numeric_fields = [];
+    var contact_us_form = $("form#contactForm");
+    var form_valid = true;
+    
+    $("input[type=text]", contact_us_form).each(function(){
+       var value = $.trim($(this).val());
+       if(value == "") {
+            var label = get_label(this);
+            form_valid = false;
+            empty_textboxes.push(label);
+       }
+    });
+    //phone number
+    $('input#phone', contact_us_form).each(function() {
+        var value = $.trim($(this).val());
+        var label = get_label(this);
+        if(value.length > 0 && !value.match(/^[0-9]+$/)) {
+            form_valid = false;
+            non_numeric_fields.push(label);
+        }else{
+            if(value.length != 10){
+                form_valid = false;
+                invalid_numeric_fields.push(label);
+            }
+        }
+    });
+    
+    $("input#email", contact_us_form).each(function(){       
+        var value = $(this).val();
+        var label = get_label(this);
+        if(!valid_email(value)) {
+            form_valid = false;
+            invalid_emails.push(label); 
+        }
+    });  
+    if(form_valid == true){
+        $.ajax({
+             type: "POST",
+             url: $("form#contactForm").attr("action"),
+             data: $("form#contactForm").serialize(),
+             beforeSend: function(){
+
+             },
+             complete: function() {           
+
+             },
+             success: function(data){
+                contact_us_form.find("div#success").text("Contact Us Message send successfully.")
+             }
+         });        
+    }else{
+        $(".error_msg").text("");
+        var new_msg = "Could not proceed with Contact us.";
+        if (empty_textboxes.length > 0) {
+            new_msg += "\n\nPlease provide value for following fields:\n" + empty_textboxes.join(", ") + ".";
+        }
+        if(invalid_numeric_fields.length > 0){
+            new_msg += "\n\nPlease provide valid values for " + invalid_numeric_fields.join(" and ") + ".";
+        }
+        if (non_numeric_fields.length > 0) {
+            new_msg += "\n\nPlease provide a valid number for " + non_numeric_fields.join(", ") + ".";
+        }         
+        if (invalid_emails.length > 0) {
+            new_msg += "\n\nPlease provide a valid address for " + invalid_emails.join(" and ") + ".";
+        }
+        
+        alert(new_msg);
+    }
+    return false;
+});

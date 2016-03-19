@@ -17,4 +17,11 @@ class ApplicantMailer < ActionMailer::Base
   	@user = user
   	mail(from: @from, to: @to, subject: "Product Order for #{product.name} ")
   end
+  
+  def contact_us_email(contact_us)
+  	@from = User.where(admin: true)[0]["email"]
+  	@to = User.where(admin: true)[0]["email"]
+  	@contact_us = contact_us
+  	mail(from: @from, to: @to, subject: "Conntact Us ")
+  end
 end
