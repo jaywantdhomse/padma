@@ -300,7 +300,45 @@ that meet the world standards.</h3>
                <div class="col-lg-12">
                   <div class="row">
                     <div class="col-md-6">
-                        <%= render "applicants/new"%>
+                        <form method="post" action="applicant_submit" name="applicant_submit" id="applicantForm" >
+                            <div class="form-group">
+                                <input type="text" data-lable="First Name" name="appl[first_name]" class="form-control" placeholder="First Name" id="first_name">
+                                <p class="help-block text-danger"></p>
+                            </div>
+							<div class="form-group">
+                                <input type="text" data-lable="Last Name" name="appl[last_name]" class="form-control" placeholder="Last Name" id="last_name" >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-lable="Apply For" name="appl[apply_for]" class="form-control" placeholder="Apply For" id="apply_for">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-lable="Email" name="appl[email]" class="form-control" placeholder="Email" id="email" >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-lable="Phone" name="appl[phone]" class="form-control" placeholder="Phone" id="phone">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-lable="Current Organization" name="appl[current_organization]" class="form-control" placeholder="Current Organization" id="current_organization" >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" data-lable="Current Profile" name="appl[current_profile]" class="form-control" placeholder="Current Profile" id="current_profile" >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" data-lable="Avatar" name="appl[avatar]" class="form-control" placeholder="Avatar" id="applicant_avatar" >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div id="success" style="color:green"></div>
+                                <button type="submit" class="btn btn-primary">Submit Application</button>
+                            </div>                           
+                        </form>
                     </div>
                     <div class="col-md-6">
                       <img src="/assets/interview.png	" style="width:100%" />
@@ -570,6 +608,7 @@ that meet the world standards.</h3>
 
 
     <script src="/assets/jquery.js"></script>
+    <script src="/assets/jquery_form.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/assets/bootstrap.js"></script>

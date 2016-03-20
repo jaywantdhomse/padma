@@ -24,6 +24,13 @@ class HomeController < ApplicationController
   	render :json => {}
   end
   
+  def applicant_submit
+  	applicant_submit = Applicant.new(applicant_submit_params)
+  	applicant_submit.save
+  	ApplicantMailer.applicant_email(applicant_submit).deliver
+  	render :json => {}
+  end
+  
   private
 
   def contact_params
@@ -32,6 +39,10 @@ class HomeController < ApplicationController
   
   def distributor_complaint_params
     params.require(:distributor_complaint).permit(:by, :name, :email, :phone, :city, :address, :pincode, :product, :model, :complaint)
+  end
+  
+  def applicant_submit_params
+    params.require(:appl).permit(:first_name, :last_name, :email, :phone, :apply_for, :current_organization, :current_profile, :avatar)
   end
   
 end

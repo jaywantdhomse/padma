@@ -4,15 +4,9 @@ class ApplicantsController < ApplicationController
   end
 
   def create
-    @applicant = Applicant.new(applicant_params)
-    if @applicant.save
-      flash.now[:error] = nil
-      flash.now[:notice] = 'Thank you for your application!'
-      render :json => {}
-    else
-      flash.now[:error] = 'Cannot send application.'
-      render :json => {}
-    end
+    applicant = Applicant.new(applicant_params)
+    applicant.save
+  	render :json => {}
   end
   
   private
@@ -21,7 +15,7 @@ class ApplicantsController < ApplicationController
     end
 
     def applicant_params
-      params.require(:applicant).permit(:first_name, :email, :upload_cv, :last_name, :current_organization, :current_profile, :apply_for, :phone)
+      params.require(:applicant).permit(:first_name, :email, :last_name, :current_organization, :current_profile, :apply_for, :phone, :avatar)
     end
     
 end

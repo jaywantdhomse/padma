@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   match "order_product" => "products#order_product", via: [:get, :post]
   match "contact_us" => "home#contact_us", via: [:get, :post]
   match "distributor_complaint" => "home#distributor_complaint", via: [:get, :post]
+  match "applicant_submit" => "home#applicant_submit", via: [:post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

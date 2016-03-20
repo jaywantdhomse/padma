@@ -40,3 +40,5 @@ gem 'mysql2'
 gem 'pg'
 gem 'devise'
 gem 'simple_form'
+gem 'carrierwave'
+

@@ -448,11 +448,14 @@ $("form#applicantForm").submit(function() {
             invalid_emails.push(label); 
         }
     });  
+
     if(form_valid == true){
-        $.ajax({
+    	$input = $('#applicant_avatar');
+        $("form#applicantForm").ajaxSubmit({
              type: "POST",
+             dataType: "json",
              url: $("form#applicantForm").attr("action"),
-             data: $("form#applicantForm").serialize(),
+             data: $("form#applicantForm").serialize()+"&applicant['avatar']"+$input[0].files[0],
              beforeSend: function(){
 
              },

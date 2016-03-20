@@ -4,6 +4,8 @@ class Applicant < ActiveRecord::Base
   # in ActionMailer accepts.
   
   after_create :send_applicant_email
+  
+  mount_uploader :avatar, AvatarUploader
 
   def headers
     {
