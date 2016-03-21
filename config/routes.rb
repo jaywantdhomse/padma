@@ -12,14 +12,19 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'home#home'
   devise_for :users, :controllers => {:registrations => "registration", :sessions => "devisesession", :passwords => 'passwords', :confirmations => "confirmation"}
   
   match "show_category_products" => "products#show_category_products", via: [:get, :post]
   match "order_product" => "products#order_product", via: [:get, :post]
   match "contact_us" => "home#contact_us", via: [:get, :post]
   match "distributor_complaint" => "home#distributor_complaint", via: [:get, :post]
-  match "applicant_submit" => "home#applicant_submit", via: [:post]
+  match "applicant_submit" => "home#applicant_submit", via: [:get, :post]
+  match "new" => "home#new", via: [:get]
+  match "home" => "home#home", via: [:get]
+  match "about_us" => "home#about_us", via: [:get]
+  match "contact" => "home#contact", via: [:get]
+  match "distributor" => "home#distributor", via: [:get]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

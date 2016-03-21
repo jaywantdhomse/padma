@@ -7,7 +7,7 @@ class ApplicantMailer < ActionMailer::Base
     @to = to[0].email
     current = applicant.email
     @from = current
-    mail(from: @from, to: @to, subject: 'Application for the job.')
+    mail(from: @from, to: @to, subject: "User has applied for the given position.")
   end
   
   def order_email(user, product)
@@ -15,7 +15,7 @@ class ApplicantMailer < ActionMailer::Base
   	@to = User.where(admin: true)[0]["email"]
   	@product = product
   	@user = user
-  	mail(from: @from, to: @to, subject: "Product Order for #{product.name} ")
+  	mail(from: @from, to: @to, subject: "User has ordered the product.")
   end
   
   def contact_us_email(contact_us)
@@ -46,7 +46,7 @@ class ApplicantMailer < ActionMailer::Base
   	@from = User.where(admin: true)[0]["email"]
   	@to = User.where(admin: true)[0]["email"]
   	@distributor_complaint = distributor_complaint
-  	mail(from: @from, to: @to, subject: "Your Distributors Complaint.")
+  	mail(from: @from, to: @to, subject: "Distributor has sent the complaint about the product.")
   end
   
 end
