@@ -2,12 +2,18 @@ class ApplicantMailer < ActionMailer::Base
 
   def applicant_email(applicant) 
   	Rails.logger.debug applicant.email
+  	@first_name = applicant.first_name
+  	@last_name = applicant.last_name
+  	@apply_for = applicant.apply_for
+  	@email = applicant.email
+  	@phone = applicant.phone
+  	@current_organizaton = applicant.current_organization
+  	@current_profile = applicant.current_profile
     to = User.where(admin: true)
-    Rails.logger.debug to[0]
     @to = to[0].email
     current = applicant.email
     @from = current
-    mail(from: @from, to: @to, subject: "User has applied for the given position.")
+    mail(from: @from, to: @to, subject: "User has applied for the position on your seplworld.")
   end
   
   def order_email(user, product)

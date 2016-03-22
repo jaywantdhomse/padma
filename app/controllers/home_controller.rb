@@ -45,12 +45,16 @@ class HomeController < ApplicationController
   	redirect_to distributor_path
   end
   
+  def applicant
+  	@vacancy = Vacancy.new
+	@vacancies = Vacancy.all
+  end 
+  
   def applicant_submit
-  	@vacancies = Vacancy.all
-#  	applicant_submit = Applicant.new(applicant_submit_params)
-#  	applicant_submit.save
-#  	ApplicantMailer.applicant_email(applicant_submit).deliver
-# 	render :json => {}
+  	applicant_submit = Applicant.new(applicant_submit_params)
+  	applicant_submit.save
+  	ApplicantMailer.applicant_email(applicant_submit).deliver
+ 	redirect_to applicant_path
   end
   
   private
