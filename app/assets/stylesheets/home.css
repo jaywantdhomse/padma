@@ -1,4 +1,4 @@
-section#carrier table{
+table#carrier{
     width: 100%;
     /*color: white;*/
 }
@@ -9,7 +9,7 @@ section#carrier h2{
     font-size: 40px;
 }
 
-section#carrier td, section#carrier th{
+table#carrier td, table#carrier th{
     border: 1px solid;
     padding: 5px;
 }
@@ -48,4 +48,10 @@ section#carrier{
 		padding: 16px;
 		font-size: 17px;
 		background: lightskyblue;
+	}
+	
+	.home-category{
+		padding:5px;
+		text-align:center;
+		min-height:150px;
 	}

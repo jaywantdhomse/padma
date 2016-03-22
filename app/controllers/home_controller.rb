@@ -57,6 +57,15 @@ class HomeController < ApplicationController
  	redirect_to applicant_path
   end
   
+  def product
+  	@categories = Category.all
+  	if params[:category_id].present? && !params[:category_id].nil?
+  		@products = Product.where(:category_id => params[:category_id]) 
+  	else
+  		@products = Product.where(:category_id => @categories[0].id)
+  	end
+  end
+  
   private
 
   def contact_params

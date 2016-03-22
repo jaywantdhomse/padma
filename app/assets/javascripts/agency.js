@@ -34,98 +34,13 @@ function valid_email(x) {
     }
     return true;
 }
-
-// Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
-    $('.navbar-toggle:visible').click();
-});
-
-$(".login").click(function() {
-    $("#loginModal").modal("show");
-});
-$(".category").click(function() {
-    $("#categoryModal").modal("show");
-});
-$(".add_product").click(function() {
-    $("#add_productModal").modal("show");
-});
-$(".check_all_category").click(function() {
-    $("#portfolioModal4").modal("show");
-    var category_id = $(this).attr("data-id");
-    var category_name = $(this).attr("data-name");
-    $.ajax({
-             type: "POST",
-             url: "show_category_products",
-             dataType: "json",
-             data: {
-             	category_id: category_id
-             },
-             beforeSend: function(){
-				$("#portfolioModal4").find("div.modal-body").html("<img src='/assets/loading.gif'>");
-             },
-             complete: function() {
-				
-             },
-             success: function(data){
-             	console.log(data);
-             	var html = "";
-             	var is_closed = false;
-             	for(var i=0; i<data["products"].length; i++){
-             		if(i % 4 == 0){
-             			html += "<div class='row'>";
-             		}
-		         	html += "<div class='col-md-3 col-sm-6'>"+
-		                        	"<img class='img-responsive' src='/assets/startup-framework.png' />"+
-		                        	"<div>Name:"+data["products"][i]["name"]+"</div>"+
-		                        	"<div>Category:"+category_name+"</div>"+
-		                        	"<div>Model:"+data["products"][i]["model"]+"</div>"+
-		                        	"<div>Price:"+data["products"][i]["price"]+"</div>"+
-		                        	"<div>Description:"+data["products"][i]["description"]+"</div>"+
-		                        	"<button onclick='order_now(this)' data-id='"+data["products"][i]["id"]+"' class='btn btn-primary'>Order Online</button>"+
-		                        	"<div class='order_msg' style='color:green;'></div>"+
-                        	"</div>";
-		            if(i != 0 && i % 3 == 0){
-						html += "</div>";
-						is_closed = true;
-             		}
-                } 
-                if(!is_closed){
-                	html += "</div>";
-                }
-                $("#portfolioModal4").find("div.modal-body").html(html);
-             }
-         });
-         
-});
-$(".vacancy").click(function() {
-    $("#vacancyModal").modal("show");
-});
-
-function order_now(ctrl){
-	var product_id = $(ctrl).attr("data-id");
-	$.ajax({
-             type: "POST",
-             url: "order_product",
-             dataType: "json",
-             data: {
-             	product_id: product_id
-             },
-             beforeSend: function(){
-
-             },
-             complete: function() {
-				
-             },
-             success: function(data){
-             	$(ctrl).closest("div").find("div.order_msg").text("Order Placed Successfully.");
-             }
-         });
-}
-
-
-
-
-$("form#user_signup").submit(function() {
+$(document).on('ready page:load', function () {
+   console.log("Loaded....");
+   $(".login").click(function() {
+	  $("#loginModal").modal("show");
+   });
+   
+   $("form#user_signup").submit(function() {
     var empty_textboxes = [];
     var invalid_emails = [];
     var invalid_numeric_fields = [];
@@ -254,6 +169,94 @@ $("form#user_login").submit(function() {
     }
     return false;
 });
+
+
+}); 
+// Closes the Responsive Menu on Menu Item Click
+$('.navbar-collapse ul li a').click(function() {
+    $('.navbar-toggle:visible').click();
+});
+
+$(".category").click(function() {
+    $("#categoryModal").modal("show");
+});
+$(".add_product").click(function() {
+    $("#add_productModal").modal("show");
+});
+$(".check_all_category").click(function() {
+    $("#portfolioModal4").modal("show");
+    var category_id = $(this).attr("data-id");
+    var category_name = $(this).attr("data-name");
+    $.ajax({
+             type: "POST",
+             url: "show_category_products",
+             dataType: "json",
+             data: {
+             	category_id: category_id
+             },
+             beforeSend: function(){
+				$("#portfolioModal4").find("div.modal-body").html("<img src='/assets/loading.gif'>");
+             },
+             complete: function() {
+				
+             },
+             success: function(data){
+             	console.log(data);
+             	var html = "";
+             	var is_closed = false;
+             	for(var i=0; i<data["products"].length; i++){
+             		if(i % 4 == 0){
+             			html += "<div class='row'>";
+             		}
+		         	html += "<div class='col-md-3 col-sm-6'>"+
+		                        	"<img class='img-responsive' src='/assets/startup-framework.png' />"+
+		                        	"<div>Name:"+data["products"][i]["name"]+"</div>"+
+		                        	"<div>Category:"+category_name+"</div>"+
+		                        	"<div>Model:"+data["products"][i]["model"]+"</div>"+
+		                        	"<div>Price:"+data["products"][i]["price"]+"</div>"+
+		                        	"<div>Description:"+data["products"][i]["description"]+"</div>"+
+		                        	"<button onclick='order_now(this)' data-id='"+data["products"][i]["id"]+"' class='btn btn-primary'>Order Online</button>"+
+		                        	"<div class='order_msg' style='color:green;'></div>"+
+                        	"</div>";
+		            if(i != 0 && i % 3 == 0){
+						html += "</div>";
+						is_closed = true;
+             		}
+                } 
+                if(!is_closed){
+                	html += "</div>";
+                }
+                $("#portfolioModal4").find("div.modal-body").html(html);
+             }
+         });
+         
+});
+$(".vacancy").click(function() {
+    $("#vacancyModal").modal("show");
+});
+
+function order_now(ctrl){
+	var product_id = $(ctrl).attr("data-id");
+	$.ajax({
+             type: "POST",
+             url: "order_product",
+             dataType: "json",
+             data: {
+             	product_id: product_id
+             },
+             beforeSend: function(){
+
+             },
+             complete: function() {
+				
+             },
+             success: function(data){
+             	$(ctrl).closest("div").find("div.order_msg").text("Order Placed Successfully.");
+             }
+         });
+}
+
+
 
 
 
