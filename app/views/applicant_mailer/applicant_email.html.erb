@@ -17,23 +17,27 @@
                                     <h1 style="color: #202020 !important; display: block; font-family: Helvetica; font-size: 22px; font-style: normal; font-weight: bold; line-height: 100%; letter-spacing: normal; text-align: left; margin: 0 0 10px;" align="left">
                                         Hi,
                                     </h1>
-                                    <h3 style="color: #606060 !important; display: block; font-family: Helvetica; font-size: 16px; font-style: italic; font-weight: normal; line-height: 100%; letter-spacing: normal; text-align: left; margin: 0 0 10px;" align="left">New User has applied for the postion to this site, and his details are:- </h3>
+                                    <h3 style="color: #606060 !important; display: block; font-family: Helvetica; font-size: 16px; font-style: italic; font-weight: normal; line-height: 100%; letter-spacing: normal; text-align: left; margin: 0 0 10px;" align="left"><%= @first_name %> <%= @last_name %> has applied for the <%= @apply_for %> from seplworld, and his details are:- </h3>
                                     
                                     <h4 style="color: #08c !important; display: block; font-family: Helvetica; font-size: 14px; font-weight: normal; line-height: 100%; letter-spacing: normal; text-align: left; margin: 0 0 10px;" align="left">
                                     <br>
-                                      <b>Name: <%= @first_name %></b>
+                                      <b>Name: <%= @first_name %> <%= @last_name %></b>
                                     <br>
-                                      <b>Phone: <%= @last_name %></b>
                                     <br>
-                                      <b>Email: <%= @apply_for %></b>
+                                      <b>Phone: <%= @phone %></b>
+                                    <br>
+                                    <br>
+                                      <b>Applied For: <%= @apply_for %></b>
                                       <br>
-                                      <b>City: <%= @email %></b>
+                                      <br>
+                                      <b>Email: <%= @email %></b>
                                     <br>
-                                      <b>Address: <%= @phone %></b>
                                     <br>
-                                      <b>Pincode: <%= @current_organizaton %></b>
+                                      <b>Current Organization: <%= @current_organization %></b>
                                     <br>
-                                      <b>Message: <%= @current_profile %></b>
+                                    <br>
+                                      <b>Current Profile: <%= @current_profile %></b>
+                                    <br>
                                     <br>
                                       </h4>
                                       <h4 style="color: red !important; display: block; font-family: Helvetica; font-size: 14px; font-weight: bolder; line-height: 100%; letter-spacing: normal; text-align: left; margin: 0 0 10px;" align="left">

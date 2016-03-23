@@ -33,16 +33,14 @@ class HomeController < ApplicationController
   	contact_us = ContactUs.new(contact_params)
   	contact_us.save
   	ApplicantMailer.contact_us_email(contact_us).deliver
-  	flash[:notice] = "Contact Form has been send successfully."
-	redirect_to contact_path
+	render :json => {}
   end
   
   def distributor_complaint
   	distributor_complaint = DistributorComplaint.new(distributor_complaint_params)
   	distributor_complaint.save
   	ApplicantMailer.distributor_complaint_email(distributor_complaint).deliver
-  	flash[:notice] = "Distributors complaint has been send successfully."
-  	redirect_to distributor_path
+  	render :json => {}
   end
   
   def applicant
@@ -54,7 +52,7 @@ class HomeController < ApplicationController
   	applicant_submit = Applicant.new(applicant_submit_params)
   	applicant_submit.save
   	ApplicantMailer.applicant_email(applicant_submit).deliver
- 	redirect_to applicant_path
+ 	render :json => {}
   end
   
   def product

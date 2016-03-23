@@ -7,13 +7,13 @@ class ApplicantMailer < ActionMailer::Base
   	@apply_for = applicant.apply_for
   	@email = applicant.email
   	@phone = applicant.phone
-  	@current_organizaton = applicant.current_organization
+  	@current_organization = applicant.current_organization
   	@current_profile = applicant.current_profile
     to = User.where(admin: true)
     @to = to[0].email
     current = applicant.email
     @from = current
-    mail(from: @from, to: @to, subject: "User has applied for the position on your seplworld.")
+    mail(from: @from, to: @to, subject: "#{@first_name} has applied for #{@apply_for} in your seplworld.")
   end
   
   def order_email(user, product)
@@ -35,7 +35,7 @@ class ApplicantMailer < ActionMailer::Base
   	@from = User.where(admin: true)[0]["email"]
   	@to = User.where(admin: true)[0]["email"]
   	@contact_us = contact_us
-  	mail(from: @from, to: @to, subject: "New User has contacted you on the seplworld from contact.")
+  	mail(from: @from, to: @to, subject: "#{@name} has contacted you on the seplworld from contact form.")
   end
   
   def distributor_complaint_email(distributor_complaint)
@@ -52,7 +52,7 @@ class ApplicantMailer < ActionMailer::Base
   	@from = User.where(admin: true)[0]["email"]
   	@to = User.where(admin: true)[0]["email"]
   	@distributor_complaint = distributor_complaint
-  	mail(from: @from, to: @to, subject: "Distributor has sent the complaint about the product.")
+  	mail(from: @from, to: @to, subject: "#{@name} has sent the complaint about the product.")
   end
   
 end
