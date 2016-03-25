@@ -64,6 +64,12 @@ class HomeController < ApplicationController
   	end
   end
   
+  def order_product
+  	product = Product.find(params["product_id"])
+  	ApplicantMailer.order_email(current_user, product).deliver
+  	render :json => {}
+  end
+  
   private
 
   def contact_params
@@ -77,5 +83,9 @@ class HomeController < ApplicationController
   def applicant_submit_params
     params.require(:appl).permit(:first_name, :last_name, :email, :phone, :apply_for, :current_organization, :current_profile, :avatar)
   end
+  
+  def product_params
+      params.require(:product).permit(:name, :category_id, :model, :price, :image, :description)
+    end
   
 end

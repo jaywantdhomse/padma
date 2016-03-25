@@ -41,12 +41,6 @@ class ProductsController < ApplicationController
   	render :json => {"products" => products}
   end
   
-  def order_product
-  	product = Product.find(params["product_id"])
-  	ApplicantMailer.order_email(current_user, product).deliver
-  	render :json => {}
-  end
-
   private
     def set_product
       @product = Product.find(params[:id])

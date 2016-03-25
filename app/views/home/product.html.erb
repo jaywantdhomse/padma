@@ -25,7 +25,26 @@
 						<div class='row' style='padding-bottom: 10px;'>
 					<% end %>
 					<div class="col-md-4">
-						<div style="border: 1px solid blue; height: 150px; background: lightskyblue; border-radius: 10px;"><%= product.name %></div>
+						<div style="border:1px solid grey;">
+							<div style="height: 150px; background: lightskyblue;">
+								<%= image_tag product.image %>
+							</div>
+							<div style="height: auto;">
+								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Name: </span>
+								<span style="font-size: 17px; color: darkblue;"><%= product.name %></span><br>
+								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Of Category: </span>
+								<span style="font-size: 17px; color: darkblue;"><%= product.name %></span><br>
+								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Model: </span>
+								<span style="font-size: 17px; color: darkblue;"><%= product.model %></span><br>
+								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Price: </span>
+								<span style="font-size: 17px; color: darkblue;"><%= product.price %></span><br>
+								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Description: </span>
+								<span style="font-size: 17px; color: darkblue;"><%= product.description %></span><br>
+								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Added At: </span>
+								<span style="font-size: 17px; color: darkblue;"><%= product.updated_at %></span><br>
+							</div>
+							<button onclick='order_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Order Online</button>
+						</div>
 					</div>
 					<% if(i != 3 && i % 3 == 2) %>
 						<% is_closed = true %>

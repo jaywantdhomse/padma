@@ -399,6 +399,29 @@ $(document).on('ready page:load', function () {
 		}
 		return false;
 	});
+	
+	function order_now(ctrl){
+	alert()
+	var product_id = $(ctrl).attr("data-id");
+	$.ajax({
+             type: "POST",
+             url: "order_product",
+             dataType: "json",
+             data: {
+             	product_id: product_id
+             },
+             beforeSend: function(){
+
+             },
+             complete: function() {
+				
+             },
+             success: function(data){
+             	$(ctrl).closest("div").find("div.order_msg").text("Order Placed Successfully.");
+             }
+         });
+	}
+
 
 
 }); 
@@ -464,27 +487,6 @@ $(".check_all_category").click(function() {
 $(".vacancy").click(function() {
     $("#vacancyModal").modal("show");
 });
-
-function order_now(ctrl){
-	var product_id = $(ctrl).attr("data-id");
-	$.ajax({
-             type: "POST",
-             url: "order_product",
-             dataType: "json",
-             data: {
-             	product_id: product_id
-             },
-             beforeSend: function(){
-
-             },
-             complete: function() {
-				
-             },
-             success: function(data){
-             	$(ctrl).closest("div").find("div.order_msg").text("Order Placed Successfully.");
-             }
-         });
-}
 
 function applyFunction(ctrl){
 	var post = $(ctrl).attr("data-post");
