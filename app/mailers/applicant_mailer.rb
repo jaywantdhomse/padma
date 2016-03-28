@@ -9,10 +9,12 @@ class ApplicantMailer < ActionMailer::Base
   	@phone = applicant.phone
   	@current_organization = applicant.current_organization
   	@current_profile = applicant.current_profile
+  	@file = applicant.avatar
     to = User.where(admin: true)
     @to = to[0].email
     current = applicant.email
     @from = current
+    attachments[@file.attachment.original_filename] = File.read(@file.attachment.current_path)
     mail(from: @from, to: @to, subject: "#{@first_name} has applied for #{@apply_for} in your seplworld.")
   end
   
