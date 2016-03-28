@@ -3,8 +3,8 @@
   <div class="form-inputs">
   	<div class="text-padd"><%= f.input :name, :placeholder => "Product Name", :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd">
-  	<%= select("category", "category_id", Category.all.collect {|v| [ v.name, v.name ] }, {include_blank: 'None'}, { :class => 'select_category', :style => 'padding: 12px 179px 10px 58px; text-align: center; margin: 0 0 0 84px; border-radius: 12px;' }) %>
-  	</div>
+  		<%= f.association :category, { :class => 'select_category', :style => 'padding: 4px 36px 8px 73px; margin: 4px 8px 4px 32px; border-radius: 12px;' } %>
+	</div>
   	<div class="text-padd"><%= f.input :model, :placeholder => "Model of Product", :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd"><%= f.input :price, :placeholder => "Price Of Product",  :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd"><%= f.file_field :avatar, :type => "file", :input_html => { :class => "form-control", :style => 'padding: 12px 179px 10px 58px;' }, label: false %></div>

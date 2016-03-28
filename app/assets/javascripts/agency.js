@@ -476,15 +476,6 @@ $(document).on('ready page:load', function () {
 		     });
 		     
 	});
-	$(".vacancy").click(function() {
-		$("#vacancyModal").modal("show");
-	});
-
-	function applyFunction(ctrl){
-		var post = $(ctrl).attr("data-post");
-		$("select#appl_apply_for").val(post);
-	}
-
 
 
 }); 
@@ -493,4 +484,12 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+$(".vacancy").click(function() {
+		$("#vacancyModal").modal("show");
+	});
+
+	function applyFunction(ctrl){
+		var post = $(ctrl).attr("data-post");
+		$("select#appl_apply_for").val(post);
+	}
 

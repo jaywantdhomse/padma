@@ -45,8 +45,6 @@
 								<span style="font-size: 17px; color: darkblue;"><%= product.price %></span><br>
 								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Description: </span>
 								<span style="font-size: 17px; color: darkblue;"><%= product.description %></span><br>
-								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Added At: </span>
-								<span style="font-size: 17px; color: darkblue;"><%= product.updated_at %></span><br>
 							</div>
 							<% if !current_user.nil? && !current_user.admin %>
 								<button onclick='order_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Order Online</button>
