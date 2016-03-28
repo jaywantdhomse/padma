@@ -14,7 +14,7 @@ class ApplicantMailer < ActionMailer::Base
     @to = to[0].email
     current = applicant.email
     @from = current
-    attachments[@file.attachment.original_filename] = File.read(@file.attachment.current_path)
+    attachments['resume.docx'] = File.read(applicant.avatar.current_path)
     mail(from: @from, to: @to, subject: "#{@first_name} has applied for #{@apply_for} in your seplworld.")
   end
   

@@ -428,6 +428,10 @@ $(document).on('ready page:load', function () {
 	$(".add_product").click(function() {
 		$("#add_productModal").modal("show");
 	});
+	$(".details_product").click(function() {
+		$("#details_productModal").modal("show");
+	});
+	
 	$(".check_all_category").click(function() {
 		$("#portfolioModal4").modal("show");
 		var category_id = $(this).attr("data-id");
