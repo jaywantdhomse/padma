@@ -94,7 +94,7 @@ class HomeController < ApplicationController
   end
   
   def product_params
-      params.require(:product).permit(:name, :category_id, :model, :price, :image, :description)
+      params.require(:product).permit(:name, :category_id, :model, :price, :avatar, :description)
     end
   
 end
