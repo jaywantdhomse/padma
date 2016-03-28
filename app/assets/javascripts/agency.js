@@ -34,6 +34,9 @@ function valid_email(x) {
     }
     return true;
 }
+
+
+
 $(document).on('ready page:load', function () {
    console.log("Loaded....");
    $(".login").click(function() {
@@ -400,27 +403,7 @@ $(document).on('ready page:load', function () {
 		return false;
 	});
 	
-	function order_now(ctrl){
-	alert()
-	var product_id = $(ctrl).attr("data-id");
-	$.ajax({
-             type: "POST",
-             url: "order_product",
-             dataType: "json",
-             data: {
-             	product_id: product_id
-             },
-             beforeSend: function(){
 
-             },
-             complete: function() {
-				
-             },
-             success: function(data){
-             	$(ctrl).closest("div").find("div.order_msg").text("Order Placed Successfully.");
-             }
-         });
-	}
 	
 	$(".category").click(function() {
     $("#categoryModal").modal("show");
@@ -496,4 +479,82 @@ $(".vacancy").click(function() {
 		var post = $(ctrl).attr("data-post");
 		$("select#appl_apply_for").val(post);
 	}
+	
+	function pro_details(ctrl){
+		var product_id = $(ctrl).attr("data-id");
+		$.ajax({
+		         type: "POST",
+		         url: "get_product_details",
+		         dataType: "json",
+		         data: {
+		         	product_id: product_id
+		         },
+		         beforeSend: function(){
+					$("#details_productModal").find("div.modal-body").html("<img src='/assets/loading.gif'>");
+		         },
+		         complete: function() {
+				
+		         },
+		         success: function(data){
+		         	console.log(data);
+		         	var button_html = '';
+		         	if(data["is_user_login"]){
+		         		button_html += '<div><div class="order_msg"></div><button data-id="'+ data["product"]["id"]+'" class="portfolio-link order_online btn btn-primary" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">Order Online</button></div>';
+		         	}else{
+		         		button_html += '<button class="portfolio-link login btn btn-primary" data-toggle="modal" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">Order Online</button>';
+		         	}
+		         	
+		         	var html = '<div class="row">'+
+                    '<div class="col-lg-12">'+
+                    	'<div>'+
+							'<div style="height: 300px; background: lightskyblue;">'+
+								'<img alt="Blue 0.5w" src="'+data["product"]["avatar"]["url"]+'" style="width: 100%; height: 300px;">'+
+							'</div>'+
+							'<div style="height: auto;">'+
+								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Name: </span>'+
+								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["name"]+'</span><br>'+
+								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Of Category: </span>'+
+								'<span style="font-size: 17px; color: darkblue;">'+data["category_name"]+'</span><br>'+
+								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Model: </span>'+
+								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["model"]+'</span><br>'+
+								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Price: </span>'+
+								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["price"]+'</span><br>'+
+								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Description: </span>'+
+								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["description"]+'</span><br>'+
+							'</div>'+
+								button_html +
+						'</div>'+
+                    '</div>'+
+                '</div>';
+		            $("#details_productModal").find("div.modal-body").html(html);
+		            $(".login").click(function() {
+					  $("#loginModal").modal("show");
+				   });
+				   
+						$(".order_online").click(function() {
+							var product_id = $(this).attr("data-id");
+							$.ajax({
+									 type: "POST",
+									 url: "order_product",
+									 dataType: "json",
+									 data: {
+									 	product_id: product_id
+									 },
+									 beforeSend: function(){
+
+									 },
+									 complete: function() {
+				
+									 },
+									 success: function(data){
+									 	$(this).closest("div").find("div.order_msg").text("Order Placed Successfully.");
+									 }
+								 });
+						});				   
+				  
+				   
+		         }
+		     });
+	}
+	
 

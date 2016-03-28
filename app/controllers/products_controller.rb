@@ -41,6 +41,20 @@ class ProductsController < ApplicationController
   	render :json => {"products" => products}
   end
   
+  def get_product_details
+  	product = Product.find(params[:product_id])
+  	category_name = Category.find(product.category_id).name
+  	is_user_login = user_signed_in? ? true : false
+  	render :json => {"product" => product, "category_name" => category_name, "is_user_login" => is_user_login}
+  end
+  
+  def order_product
+  	@category = Category.new
+  	product = Product.find(params["product_id"])
+  	ApplicantMailer.order_email(current_user, product).deliver
+  	render :json => {}
+  end
+  
   private
     def set_product
       @product = Product.find(params[:id])

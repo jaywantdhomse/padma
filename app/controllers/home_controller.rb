@@ -72,13 +72,6 @@ class HomeController < ApplicationController
   	end
   end
   
-  def order_product
-  	@category = Category.new
-  	product = Product.find(params["product_id"])
-  	ApplicantMailer.order_email(current_user, product).deliver
-  	render :json => {}
-  end
-  
   private
 
   def contact_params
