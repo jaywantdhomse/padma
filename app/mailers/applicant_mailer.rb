@@ -19,11 +19,19 @@ class ApplicantMailer < ActionMailer::Base
   end
   
   def order_email(user, product)
+  	@u_first_name = user.first_name
+  	@u_last_name = user.last_name
+  	@u_email = user.email
+  	@p_name = product.name
+  	@p_category_id = product.category_id
+  	@p_model = product.model
+  	@p_price = product.price
+  	@p_description = product.description
   	@from = User.where(admin: true)[0]["email"]
   	@to = User.where(admin: true)[0]["email"]
   	@product = product
   	@user = user
-  	mail(from: @from, to: @to, subject: "User has ordered the product.")
+  	mail(from: @from, to: @to, subject: "#{@u_first_name} has ordered the product from Seplworld.")
   end
   
   def contact_us_email(contact_us)
