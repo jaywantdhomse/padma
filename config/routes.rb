@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   match "distributor" => "home#distributor", via: [:get]
   match "applicant" => "home#applicant", via: [:get]
   match "product" => "home#product", via: [:get]
+  match "category" => "home#category", via: [:get]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

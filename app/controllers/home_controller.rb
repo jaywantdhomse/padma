@@ -14,18 +14,28 @@ class HomeController < ApplicationController
   end
   
   def home
-  
+  	@category = Category.new
+	@categories = Category.all
   end
 	
   def about_us
-
+	@category = Category.new
+	@categories = Category.all
   end
   
   def distributor
+  	@category = Category.new
+	@categories = Category.all
+  end
   
+  def category
+  	@category = Category.new
+	@categories = Category.all
   end
 
   def contact
+  	@category = Category.new
+	@categories = Category.all
   	@contact = ContactUs.all
   end
   
@@ -44,6 +54,8 @@ class HomeController < ApplicationController
   end
   
   def applicant
+  	@category = Category.new
+	@categories = Category.all
   	@vacancy = Vacancy.new
 	@vacancies = Vacancy.all
   end 
@@ -56,6 +68,9 @@ class HomeController < ApplicationController
   end
   
   def product
+  	@category = Category.new
+	@categories = Category.all
+  	@product = Product.new
   	@categories = Category.all
   	if params[:category_id].present? && !params[:category_id].nil?
   		@products = Product.where(:category_id => params[:category_id]) 
@@ -65,6 +80,8 @@ class HomeController < ApplicationController
   end
   
   def order_product
+  	@category = Category.new
+	@categories = Category.all
   	product = Product.find(params["product_id"])
   	ApplicantMailer.order_email(current_user, product).deliver
   	render :json => {}

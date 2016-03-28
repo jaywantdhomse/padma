@@ -1,0 +1,32 @@
+<h1>New category</h1>
+
+<%= simple_form_for(@category) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+  	<div class="text-padd"><%= f.input :name, :placeholder => "Name Of Category", :input_html => { :class => "form-control" }, label: false %></div>
+  	<div class="text-padd"><%= f.input :description, :placeholder => "Description", :input_html => { :class => "form-control" }, label: false %></div>
+  	<div class="text-padd"><%= f.file_field :avatar, :type => "file", :input_html => { :class => "form-control" }, label: false %></div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit 'Add Category', :class => 'btn btn-primary submit_category' %>
+  </div>
+<% end %>
+
+<style>
+	.text-padd{
+		padding: 3px;
+	}s
+	.submit_category{
+		background-color: #fed136;
+		border-color: #fed136;
+		border-radius: 3px;
+		color: #fff;
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 15px;
+		font-weight: 700;
+		padding: 8px 10px;
+		text-transform: uppercase;
+	}
+</style>
+<%= link_to 'Back', categories_path %>

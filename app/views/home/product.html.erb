@@ -2,6 +2,11 @@
 	<div class="row">
  		<div class="col-lg-12">
  			<div class="col-md-4" style="padding-left:0px;">
+ 			<% if !current_user.nil? && current_user.admin %>
+		                <div class="portfolio-link add_product btn btn-primary" data-toggle="modal" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">
+		                    Add New Product
+		                </div>
+            <% end %>
  				<div style="height: 50%; border: 2px solid black; background:black;">
 					<div style="font-size: 21px; color: white; text-align: center; padding: 12px; border-bottom:2px solid blue;">
 						Products</div>
@@ -43,7 +48,13 @@
 								<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Added At: </span>
 								<span style="font-size: 17px; color: darkblue;"><%= product.updated_at %></span><br>
 							</div>
-							<button onclick='order_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Order Online</button>
+							<% if !current_user.nil? && !current_user.admin %>
+								<button onclick='order_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Order Online</button>
+							<% elsif !current_user.nil? && current_user.admin %>
+								<button onclick='remove_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Remove Product</button>
+							<% else %>
+								<button onclick='order_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Order Online</button>
+							<% end %>
 						</div>
 					</div>
 					<% if(i != 3 && i % 3 == 2) %>
@@ -59,3 +70,29 @@
  		</div>
  	</div>
 </div>
+
+<div class="modal fade" id="add_productModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div class="close"  data-dismiss="modal aria-hidden="true">&times;</div>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                	<h4 style="text-align: center">Add New Product</h4>
+                    <div class="col-lg-12">
+                    <%= render "products/form" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+	a:visited {
+    color: white;
+	}
+</style>
