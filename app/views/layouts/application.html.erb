@@ -35,10 +35,25 @@
 		<div class="row">
 			<div class="col-lg-12 sub-header" style="">
 				<div class="col-lg-1 sub-header" style="font-size:22px; width: 109px;">PADMA <span style="font-size: 16px;">Qoute</span></div>
-				<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px;">Customer- 11111111111</div>
-				<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px;">Service Requirement</div>
-				<div class="col-lg-1 sub-header" style="border-left: 2px solid lightblue; height:60px; width: 170px; padding-left: 37px;"><a style="color:lightblue;" href="/product">Order Online</a></div>
+				<% if user_signed_in? %>
+					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:80px;">Customer- 11111111111</div>
+				<% else %>
+					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px;">Customer- 11111111111</div>
+				<% end %>
+				<% if user_signed_in? %>
+					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; border-right: 2px solid lightblue; height:80px;">Service Requirement</div>
+				<% else %>
+					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px; border-right: 2px solid lightblue;">Service Requirement</div>
+				<% end %>
+				
+				<div class="col-lg-1 sub-header" style="height:60px; width: 170px; padding-left: 37px;">
+				<a style="color:lightblue;" href="/product">Order Online</a></div>
 				<div class="col-lg-1" style="float: right; width: 101px;"><a href="#"> <img src="/assets/logo.png" style="width:85%" /> </a></div>
+				<div class="class="col-lg-1" style="float:right;">
+					<% if user_signed_in? %>
+						Logged In: <%= current_user.first_name %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 		
@@ -179,6 +194,9 @@
 		                    <button type="submit" class="btn btn-primary">Submit</button>
 		                </div>
 		                </form>
+		                <div class="text-center">
+		                    <a type="submit" class="forgotpassword" data-toggle="modal" href="#">Forgot password</a>
+		                </div>
 		            </div>
 		        </div>
 		    </div>
@@ -207,11 +225,47 @@
     </div>
 </div>
 
+<div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div class="close"  data-dismiss="modal aria-hidden="true">&times;</div>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                	<h4 style="text-align: center">Reset Password</h4>
+                    <div class="col-lg-12">
+                    	<div style="text-align:center;"><b>Enter the email address that you signed up with</b></div>
+                    	<div>
+                    		<form action="<%= user_password_path %>" id="forgot-password-form">
+                    			<div class="form-group">
+		                            <input type="email" data-lable="Email" class="form-control" name="user[email]" placeholder="Email" id="user_email" style="width: 348px;margin: 0 0 0 63px;
+}">
+		                        </div>
+		                         <div class="row">
+						            <div class="text-center" style="padding: 12px 6px 5px 5px; font-size: 14px;">
+						                <button type="submit" class="btn btn-primary">Submit</button>
+						            </div>
+						            <div class="text-center" style="color: green; text-align: center;" id="signup_success"></div>
+						        </div>
+                    		</form>
+                    	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
 
 <style>
+	a.visited{
+		background:white;
+	}
 	.header{
 		background:blue;
 	}

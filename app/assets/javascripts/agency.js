@@ -404,7 +404,10 @@ $(document).on('ready page:load', function () {
 	});
 	
 
-	
+	$(".forgotpassword").click(function() {
+		$("#loginModal").modal("hide");
+		$("#forgotModal").modal("show");
+	});
 	$(".category").click(function() {
     $("#categoryModal").modal("show");
 	});
@@ -414,6 +417,35 @@ $(document).on('ready page:load', function () {
 	$(".details_product").click(function() {
 		$("#details_productModal").modal("show");
 	});
+	
+	//Forgot password form submit
+    $("form#forgot-password-form").submit(function() {
+        var ctrl = $(this);
+        var user_email = ctrl.find('#user_email').val();
+        if(user_email == ""){
+            ctrl.find("input#user_email").css({'border' : '1px solid red'});
+            return false;
+        }else{
+            $.ajax({
+                type: "POST",
+                url: ctrl.attr('action'),
+                data: ctrl.serialize(),
+                beforeSend: function(){                
+                },
+                complete: function() {              
+                },
+                success: function(data){
+                    if(data['response'] == "1"){
+                        window.parent.$('#reset_password_confirmation_popup').trigger('click');
+                    }else{ 
+                        $("#forgot_password_text").html("<b>We didn't recognize that email, please try again</b>").css("color", "red");
+                    }
+                }
+            });
+            return false;
+        }
+
+    });
 	
 	$(".check_all_category").click(function() {
 		$("#portfolioModal4").modal("show");
@@ -507,21 +539,25 @@ $(".vacancy").click(function() {
 		         	var html = '<div class="row">'+
                     '<div class="col-lg-12">'+
                     	'<div>'+
-							'<div style="height: 300px; background: lightskyblue;">'+
-								'<img alt="Blue 0.5w" src="'+data["product"]["avatar"]["url"]+'" style="width: 100%; height: 300px;">'+
+                    		'<div class="col-lg-6" style="border: 3px solid grey; border-radius: 21px;">'+
+								'<div style="height: 300px; background: lightskyblue;">'+
+									'<img alt="Blue 0.5w" src="'+data["product"]["avatar"]["url"]+'" style="width: 100%; height: 300px;">'+
+								'</div>'+
 							'</div>'+
-							'<div style="height: auto;">'+
-								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Name: </span>'+
-								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["name"]+'</span><br>'+
-								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Of Category: </span>'+
-								'<span style="font-size: 17px; color: darkblue;">'+data["category_name"]+'</span><br>'+
-								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Model: </span>'+
-								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["model"]+'</span><br>'+
-								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Price: </span>'+
-								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["price"]+'</span><br>'+
-								'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Description: </span>'+
-								'<span style="font-size: 17px; color: darkblue;">'+data["product"]["description"]+'</span><br>'+
-							'</div>'+
+							'<div class="col-lg-6" style="">'+
+								'<div style="height: auto;">'+
+									'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Name: </span>'+
+									'<span style="font-size: 17px; color: teal;">'+data["product"]["name"]+'</span><br>'+
+									'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Of Category: </span>'+
+									'<span style="font-size: 17px; color: teal;">'+data["category_name"]+'</span><br>'+
+									'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Model: </span>'+
+									'<span style="font-size: 17px; color: teal;">'+data["product"]["model"]+'</span><br>'+
+									'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Price: </span>'+
+									'<span style="font-size: 17px; color: teal;">'+data["product"]["price"]+'</span><br>'+
+									'<span style="font-size: 19px; font-weight: bold; padding: 0px 4px 3px 6px; margin: 0px 3px 4px 4px;">Description: </span>'+
+									'<span style="font-size: 17px; color: teal;">'+data["product"]["description"]+'</span><br>'+
+								'</div>'+
+								'</div>'+
 								button_html +
 						'</div>'+
                     '</div>'+

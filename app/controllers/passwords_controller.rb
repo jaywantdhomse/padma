@@ -5,7 +5,7 @@ class PasswordsController < Devise::PasswordsController
     end
     
     def create
-      self.resource = resource_class.send_reset_password_instructions(params[:mc_user])
+      self.resource = resource_class.send_reset_password_instructions(params[:user])
 
       if successfully_sent?(resource)
 #        respond_with({}, :location => after_sending_reset_password_instructions_path_for(resource_name))
@@ -17,11 +17,13 @@ class PasswordsController < Devise::PasswordsController
    end
    
    def edit
+   	@category = Category.new
      super
    end
   
   def update
-    self.resource = resource_class.reset_password_by_token(params[:mc_user])
+  	@category = Category.new
+    self.resource = resource_class.reset_password_by_token(params[:user])
 
     if resource.errors.empty?
       resource.unlock_access! if unlockable?(resource)
@@ -30,7 +32,7 @@ class PasswordsController < Devise::PasswordsController
       sign_in(resource_name, resource)
       session[:user] = resource.id
       session[:change_password] = true
-      resource.reset_authentication_token!
+      #resource.reset_authentication_token!
       resource.save
       redirect_to home_url
     else
