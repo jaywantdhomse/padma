@@ -437,6 +437,7 @@ $(document).on('ready page:load', function () {
                 success: function(data){
                     if(data['response'] == "1"){
                         window.parent.$('#reset_password_confirmation_popup').trigger('click');
+                        $("#send_mail_success").text("Reset password link has sent to your registered email account.");
                     }else{ 
                         $("#forgot_password_text").html("<b>We didn't recognize that email, please try again</b>").css("color", "red");
                     }
@@ -531,7 +532,7 @@ $(".vacancy").click(function() {
 		         	console.log(data);
 		         	var button_html = '';
 		         	if(data["is_user_login"]){
-		         		button_html += '<div><div class="order_msg"></div><button data-id="'+ data["product"]["id"]+'" class="portfolio-link order_online btn btn-primary" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">Order Online</button></div>';
+		         		button_html += '<div><button data-id="'+ data["product"]["id"]+'" class="portfolio-link order_online btn btn-primary" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">Order Online</button><div style="color: green; font-size: 16px; text-align: center;" class="order_msg"></div></div>';
 		         	}else{
 		         		button_html += '<button class="portfolio-link login btn btn-primary" data-toggle="modal" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">Order Online</button>';
 		         	}
@@ -568,7 +569,8 @@ $(".vacancy").click(function() {
 				   });
 				   
 						$(".order_online").click(function() {
-							var product_id = $(this).attr("data-id");
+							var ctrl = $(this);
+							var product_id = ctrl.attr("data-id");
 							$.ajax({
 									 type: "POST",
 									 url: "order_product",
@@ -583,7 +585,8 @@ $(".vacancy").click(function() {
 				
 									 },
 									 success: function(data){
-									 	$(this).closest("div").find("div.order_msg").text("Order Placed Successfully.");
+									 	ctrl.closest("div").find("div.order_msg").text("Order Placed Successfully.");
+									 	
 									 }
 								 });
 						});				   
