@@ -29,11 +29,13 @@
         var root_url = <%= root_url.to_json.html_safe %>;       
     </script>
 </head>
-<body>
-	<div class="container">
+<body style='background-color: grey'>
+	<div class="container"style="">
 		<!-- Header-->
-		<div class="row">
-			<div class="col-lg-12 sub-header" style="">
+		<div class="col-lg-12 sub-header" >
+		<div class="row" style="background-color: white">
+			
+			<div>
 				<div class="col-lg-1 sub-header" style="font-size:22px; width: 109px;">PADMA <span style="font-size: 12px;">Qoute</span></div>
 				<% if user_signed_in? %>
 					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:80px;">Customer- 11111111111</div>
@@ -41,9 +43,9 @@
 					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px;">Customer- 11111111111</div>
 				<% end %>
 				<% if user_signed_in? %>
-					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; border-right: 2px solid lightblue; height:80px;">Service Requirement</div>
+					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; border-right: 2px solid lightblue; height:80px;"><a style="color:steelblue" href="/distributor">Service Requirement</a></div>
 				<% else %>
-					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px; border-right: 2px solid lightblue;">Service Requirement</div>
+					<div class="col-lg-4 sub-header" style="text-align: center; border-left: 2px solid lightblue; height:60px; border-right: 2px solid lightblue;"><a style="color:steelblue" href="/distributor">Service Requirement</a></div>
 				<% end %>
 				
 				<div class="col-lg-1 sub-header" style="height:60px; width: 170px; padding-left: 37px;">
@@ -55,12 +57,14 @@
 					<% end %>
 				</div>
 			</div>
+			</div>
 		</div>
 		
 		<!-- Sub Header-->
 		<% if !current_user.nil? && current_user.admin %>
-			<div class="row" style="padding-bottom:5px;">
+
 				<div class="col-lg-12" style="">
+				  <div class="row" style="padding-bottom:5px;background-color: white">
 					<div class="col-lg-1 header"><a href="/home">Home</a></div>
 					<div class="col-lg-2 header"><a href="/about_us">About Us</a></div>
 					<div class="col-lg-1 header category" data-toggle="modal"><a href="#">Category</a></div>
@@ -77,8 +81,9 @@
 				</div>
 			</div>
 	    <% else %>
-			<div class="row" style="padding-bottom:5px;">
+			
 				<div class="col-lg-12" style="">
+				  <div class="row" style="padding-bottom:5px;background-color: white">
 					<div class="col-lg-1 header"><a href="/home">Home</a></div>
 					<div class="col-lg-2 header"><a href="/about_us">About Us</a></div>
 					<div class="col-lg-2 header"><a href="/product">Products</a></div>
@@ -96,44 +101,48 @@
         <% end %>
 		
 		<!-- Body-->				
-		<div class="row">
-			<%= yield %>
-		</div>	
 		
+		<div class="col-lg-12">
+			<div class="row" style="background-color: white;padding-top: 5px;">
+			  <%= yield %>
+			</div>
+		</div>
 		<!-- Footer-->
-		<div class="row" style="line-height: 28px;padding-top: 5px; padding-bottom:5px;">
-            	<div class="col-lg-12">
-		            <div class="col-md-6" style="background: dimgrey; height: 130px;padding-top:10px;">
-		                <span class="copyright" style="display:block; color:blue; font-size:25px; font-weight:bold;">Suvidhinath Electronics Pvt. Ltd.</span>
-		                <span class="copyright" style="display:block; color:blue; font-size:19px;">Reg Office: Alco Market, Rajiv Nagar,</span>
-		                <span class="copyright" style="display:block;"><span style="font-weight: bold; font-size:16px; color:white;">Nashik -</span><span style="color:white; font-size:16px;"> 422008(MH), </span><span style="font-weight: bold; font-size:16px; color:white;">Mob -</span><span style="color:white; font-size:16px;"> 08600007205</span></span>
-		                <span class="copyright"><span style="font-weight: bold;font-size:16px;">Email -</span> <span style="color:white;">info@seplworld.in,</span> <span style="font-weight: bold; font-size:16px;">Website - </span><a style="color:white;" href="http://seplworld.in" target=_blank?>www.seplworld.in</a></span>
-		                
-		            </div>
-		            <div class="col-md-6" style="background: dimgrey; height: 130px; text-align: center;
-    padding-top: 30px;">
-		                <ul class="list-inline quicklinks">
+	<div class="col-lg-12">
+		<div class="row" style="line-height: 28px;">
+		  <div class="col-md-6" style="background: dimgrey; height: 130px;padding-top:10px;">
+			  <span class="copyright" style="display:block; color:blue; font-size:25px; font-weight:bold;">Suvidhinath Electronics Pvt. Ltd.</span>
+			  <span class="copyright" style="display:block; color:blue; font-size:19px;">Reg Office: Alco Market, Rajiv Nagar,</span>
+			  <span class="copyright" style="display:block;"><span style="font-weight: bold; font-size:16px; color:white;">Nashik -</span><span style="color:white; font-size:16px;"> 422008(MH), </span><span style="font-weight: bold; font-size:16px; color:white;">Mob -</span><span style="color:white; font-size:16px;"> 08600007205</span></span>
+			  <span class="copyright"><span style="font-weight: bold;font-size:16px;">Email -</span> <span style="color:white;">info@seplworld.in,</span> <span style="font-weight: bold; font-size:16px;">Website - </span><a style="color:white;" href="http://seplworld.in" target=_blank?>www.seplworld.in</a></span>
+			  
+		  </div>
+		  <div class="col-md-6" style="background: dimgrey; height: 130px; text-align: center;padding-top: 30px;">
+			  <ul class="list-inline quicklinks">
 <!--		                    <li><a href="#">Privacy Policy</a>
-		                    </li>
-		                    <li><a href="#">Terms of Use</a>
-		                    </li> -->
-		                    <ul class="list-inline social-buttons">
-		                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-		                    </li>
-		                    <li><a href="#"><i class="fa fa-facebook"></i></a>
-		                    </li>
-		                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
-		                    </li>
-		                </ul>
-		                </ul>
-		                <ul class="list-inline quicklinks">
-							<span class="copyright">Copyright &copy; seplworld.com 2016</span>
-		                </ul>
-		                </div>
-		         </div>   
-            </div>		
+				  </li>
+				  <li><a href="#">Terms of Use</a>
+				  </li> -->
+				  <ul class="list-inline social-buttons">
+				  <li><a href="#"><i class="fa fa-twitter"></i></a>
+				  </li>
+				  <li><a href="#"><i class="fa fa-facebook"></i></a>
+				  </li>
+				  <li><a href="#"><i class="fa fa-linkedin"></i></a>
+				  </li>
+			  </ul>
+			  </ul>
+			  <ul class="list-inline quicklinks">
+				  <span class="copyright">Copyright &copy; seplworld.com 2016</span>
+			  </ul>
+			  </div>
+	   </div>   
+  </div>				
 		
 	</div>
+			
+
+
 
         
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
