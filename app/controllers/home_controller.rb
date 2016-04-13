@@ -21,6 +21,14 @@ class HomeController < ApplicationController
 	@category = Category.new
   end
   
+  def our_mission
+	@category = Category.new
+  end  
+
+  def our_vision
+	@category = Category.new
+  end
+  
   def distributor
   	@category = Category.new
   end

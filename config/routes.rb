@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   match "new" => "home#new", via: [:get]
   match "home" => "home#home", via: [:get]
   match "about_us" => "home#about_us", via: [:get]
+  match "our_vision" => "home#our_vision", via: [:get]
+  match "our_mission" => "home#our_mission", via: [:get]
   match "contact" => "home#contact", via: [:get]
   match "distributor" => "home#distributor", via: [:get]
   match "applicant" => "home#applicant", via: [:get]
