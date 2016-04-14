@@ -87,7 +87,10 @@ class HomeController < ApplicationController
   end 
   
   def distributor_complaint_params
-    params.require(:distributor_complaint).permit(:by, :name, :email, :phone, :city, :address, :pincode, :product, :model, :complaint)
+    params.require(:distributor_complaint).permit(:name, :guardian_name, :dob, :gender, :educational_qualification,
+												  :permanent_address, :present_address, :marital_status, :contact_no,
+												  :alternate_contact_no, :occupation, :current_income, :working_hrs,
+												  :total_exp, :source_of_adv, :submitted_name, :email)
   end
   
   def applicant_submit_params

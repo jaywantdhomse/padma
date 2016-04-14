@@ -7,67 +7,158 @@
                <div class="col-lg-12" style="padding-bottom: 20px;">
 	              
 	              <h3 class="section-heading" style="text-align:left;">Distributors Enquiry</h3>
-                    <div class="col-md-6" style="padding-top: 17px; background-color: lightblue; border-radius: 37px;">
-                        <form action="distributor_complaint" name="distributor_complaint" id="distributorForm" novalidate >
-                            <div class="form-group col-md-6">
-                            	<select name="distributor_complaint[by]" class="form-control">
-								  <option value="By Distributor">By Distributor</option>
-								  <option value="By User">By User</option>
-								</select>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="text" data-lable="Name" name="distributor_complaint[name]" class="form-control" placeholder="Name *" id="name" required data-validation-required-message="Please enter your name">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" data-lable="Email" name="distributor_complaint[email]" class="form-control" placeholder="Email *" id="email" required data-validation-required-message="Please enter your email">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                             <div class="form-group col-md-6">
-                                <input type="text" data-lable="Phone" name="distributor_complaint[phone]" class="form-control" placeholder="Phone *" id="phone" required data-validation-required-message="Please enter your Phone">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            
-                            <div class="form-group col-md-6">
-                                <input type="text" data-lable="City" name="distributor_complaint[city]" class="form-control" placeholder="City *" id="city" required data-validation-required-message="Please enter your City">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            
-                            <div class="form-group">
-                                <textarea data-lable="Address" name="distributor_complaint[address]" class="form-control" placeholder="Address *" id="address"></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            
-                            <div class="form-group col-md-6">
-                                <input type="text" data-lable="Pin code" name="distributor_complaint[pincode]" class="form-control" placeholder="Pin Code *" id="pincode" required data-validation-required-message="Please enter your pincode">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            
-                            <div class="form-group col-md-6">
-                                <input type="text" data-lable="Product" name="distributor_complaint[product]" class="form-control" placeholder="Product *" id="product" required data-validation-required-message="Please enter your product">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="text" data-lable="Model" name="distributor_complaint[model]" class="form-control" placeholder="Model *" id="model" required data-validation-required-message="Please enter your model">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="text" data-lable="Complaint" name="distributor_complaint[complaint]" class="form-control" placeholder="Complaint *" id="complaint" required data-validation-required-message="Please enter your complaint">
-                                <p class="help-block text-danger"></p>
-                            </div>
-
-                            <div class="text-center">
-                                <div id="success" style="color:green"></div>
-                                <button type="submit" class="btn btn-primary">Send</button>
-                            </div>                           
-                        </form>    
-                    </div>
-                    <div class="col-md-6">
-                      <img src="/assets/distri.png" style="width:100%" />
-                    </div>
+				  
+				  <div class="col-md-12" style="padding-top: 17px;">
+					<form action="distributor_complaint" name="distributor_complaint" id="distributorForm" novalidate >
+						<div class="col-md-12" style="padding-left: 30px ">
+							<h5>Personal Information</h5>
+						</div>	
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Name
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Name" name="distributor_complaint[name]" class="form-control" id="name" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Father/Husband Name
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Guardian Name" name="distributor_complaint[guardian_name]" class="form-control" id="guardian_name" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								DOB
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="DOB" name="distributor_complaint[dob]" class="form-control" id="dob" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Gender
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Gender" name="distributor_complaint[gender]" class="form-control" id="gender" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Educational Qualification
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Educational Qualification" name="distributor_complaint[educational_qualification]" class="form-control" id="educational_qualification" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Permanent Address
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Permanent Address" name="distributor_complaint[permanent_address]" class="form-control" id="permanent_address" style="height: 60px;">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Present Address
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Present Address" name="distributor_complaint[present_address]" class="form-control" id="present_address" style="height: 60px;">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Contact Number
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Contact Number" name="distributor_complaint[contact_no]" class="form-control" id="contact_no" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Alternate Contact Number
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Alternate Contact No" name="distributor_complaint[alternate_contact_no]" class="form-control" id="alternate_contact_no" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Email ID
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Email ID" name="distributor_complaint[email]" class="form-control" id="email" >
+							</div>
+						</div>
+						<div class="col-md-12" style="padding-left: 30px ">
+							<h5>Employment Information</h5>
+						</div>							
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Occupation
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Occupation" name="distributor_complaint[occupation]" class="form-control" id="occupation" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Current Income
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Current Income" name="distributor_complaint[current_income]" class="form-control" id="current_income" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Working Hours
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Working Hrs" name="distributor_complaint[working_hrs]" class="form-control" id="working_hrs" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Total Experince Years
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Total Experience" name="distributor_complaint[total_exp]" class="form-control" id="total_exp" >
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Source of Advertisement/Number
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Source of Advertisement" name="distributor_complaint[source_of_adv]" class="form-control" id="source_of_adv" >-
+							</div>
+						</div>
+						<div class="col-md-12">
+							I hereby declare that the above mentioned perticulars are true and accurate to the best of my knowledge
+						</div>
+						<div class="col-md-12" style="padding-top: 10px">
+							<div class="form-group col-md-2">
+								Submitted Name
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Submitted Name" name="distributor_complaint[submitted_name]" class="form-control" id="submitted_name" >
+							</div>							
+						</div>
+						<div class="col-md-8">
+							<div class="text-center">
+								<div id="success" style="color:green"></div>
+								<button type="submit" class="btn btn-primary">Send</button>
+							</div>
+						</div>
+					</form>		
+				  </div>
+		
+                    <!--<div class="col-md-6">-->
+                    <!--  <img src="/assets/distri.png" style="width:100%" />-->
+                    <!--</div>-->
                </div>
    
 
@@ -82,13 +173,7 @@
 		height: 35px;
 		margin-left: 231px;
 	}
-	#distributorForm #email,#distributorForm #model, #distributorForm #complaint, #distributorForm #address{
-    width: 497px;
-    padding-left: 29px;
-    padding-right: 7px;
-    margin-left: 13px;
-    margin-right: 0px;
-	}
+
 	
 	.form-group{
 		margin-bottom:7px;
