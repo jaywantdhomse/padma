@@ -55,12 +55,18 @@ class ProductsController < ApplicationController
   	render :json => {}
   end
   
+  def fetch_sub_categories
+	Rails.logger.debug(params[:category_id])
+	sub_categories = SubCategory.where(:category_id => params[:category_id])
+	render :json => {:sub_categories => sub_categories}
+  end
+  
   private
     def set_product
       @product = Product.find(params[:id])
     end
 
     def product_params
-      params.require(:product).permit(:name, :category_id, :model, :price, :avatar, :description)
+      params.require(:product).permit(:name, :category_id, :sub_category_id, :model, :price, :avatar, :description)
     end
 end

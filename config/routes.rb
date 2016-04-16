@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :sub_categories
+
   resources :vacancies
 
   resources :products
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   match "product" => "home#product", via: [:get]
   match "category" => "home#category", via: [:get]
   match "get_product_details" => "products#get_product_details", via: [:post]
+  match "fetch_sub_categories" => 'products#fetch_sub_categories', via: [:post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

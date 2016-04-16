@@ -13,6 +13,8 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+    
+
 });
 
 // Highlight the top nav as scrolling occurs
@@ -411,6 +413,9 @@ $(document).on('ready page:load', function () {
 	$(".category").click(function() {
     $("#categoryModal").modal("show");
 	});
+	$(".sub_category").click(function() {
+    $("#subCategoryModal").modal("show");
+	});    
 	$(".add_product").click(function() {
 		$("#add_productModal").modal("show");
 	});
@@ -595,5 +600,3 @@ $(".vacancy").click(function() {
 		         }
 		     });
 	}
-	
-

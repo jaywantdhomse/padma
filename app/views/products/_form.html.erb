@@ -1,10 +1,14 @@
 <%= simple_form_for(@product) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
-  	<div class="text-padd"><%= f.input :name, :placeholder => "Product Name", :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd">
-  		<%= f.association :category, { :class => 'select_category', :style => 'padding: 4px 36px 8px 73px; margin: 4px 8px 4px 32px; border-radius: 12px;' } %>
+  		<!--<%= f.association :category, { :class => 'select_category form-control' } %> -->
+		<div class="text-padd"><%= f.select :category_id, Category.all.collect{ |c| [c.name, c.id] }, {}, :class => "form-control add_product_category_id", :onchange => "fetch_sub_categories(this)" %></div>
 	</div>
+	<div class="text-padd">
+		<div class="text-padd"><%= f.select :sub_category_id, Category.first.nil? ? [] : SubCategory.where(:category_id => Category.first.id), {}, :class => "form-control" %></div>
+	</div>
+	<div class="text-padd"><%= f.input :name, :placeholder => "Product Name", :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd"><%= f.input :model, :placeholder => "Model of Product", :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd"><%= f.input :price, :placeholder => "Price Of Product",  :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd"><%= f.file_field :avatar, :type => "file", :input_html => { :class => "form-control", :style => 'padding: 12px 179px 10px 58px;' }, label: false %></div>
@@ -21,3 +25,34 @@
 		padding: 3px;
 	}
 </style>
+
+<script>
+	function fetch_sub_categories(ctrl) {
+	  var category_id = $(ctrl).val();
+	  if (category_id !="") {
+        $.ajax({
+		  url: "fetch_sub_categories",
+		  type: "post",
+		  dataType: "json",
+		  data: {
+			"category_id": category_id
+		  },
+		  beforeSend: function () {
+			$("#product_sub_category_id").html("<option>Loading Sub Categories...</option>")
+		  },
+		  complete: function () {
+	  
+		  },
+		  success: function (data) {
+			console.log(data);
+			var html = "";
+			$.each(data["sub_categories"], function(index, value) { 
+			  console.log()
+			  html += "<option value='"+value["id"]+"'>"+value["name"]+"</option>";
+			});
+			$("#product_sub_category_id").html(html);
+		  }
+		});
+      }
+    }
+</script>

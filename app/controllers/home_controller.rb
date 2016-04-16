@@ -15,22 +15,27 @@ class HomeController < ApplicationController
   
   def home
   	@category = Category.new
+  	@sub_category = SubCategory.new
   end
 	
   def about_us
 	@category = Category.new
+	@sub_category = SubCategory.new
   end
   
   def our_mission
 	@category = Category.new
+	@sub_category = SubCategory.new
   end  
 
   def our_vision
 	@category = Category.new
+	@sub_category = SubCategory.new
   end
   
   def distributor
   	@category = Category.new
+  	@sub_category = SubCategory.new
   end
   
   def category
@@ -40,6 +45,7 @@ class HomeController < ApplicationController
   def contact
   	@category = Category.new
   	@contact = ContactUs.all
+  	@sub_category = SubCategory.new
   end
   
   def contact_us
@@ -58,6 +64,7 @@ class HomeController < ApplicationController
   
   def applicant
   	@category = Category.new
+  	@sub_category = SubCategory.new
   	@vacancy = Vacancy.new
 	@vacancies = Vacancy.all
   end 
@@ -72,6 +79,7 @@ class HomeController < ApplicationController
   def product
   	@product = Product.new
   	@category = Category.new
+  	@sub_category = SubCategory.new
   	@categories = Category.all
   	if params[:category_id].present? && !params[:category_id].nil?
   		@products = Product.where(:category_id => params[:category_id]) 
