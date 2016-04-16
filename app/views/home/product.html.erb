@@ -1,7 +1,7 @@
 
 	<div class="row">
  		<div class="col-lg-12">
- 			<div class="col-md-4" style="padding-left:0px;">
+ 			<div class="col-md-3" style="padding-left:0px;">
  			<% if !current_user.nil? && current_user.admin %>
 		                <div class="portfolio-link add_product btn btn-primary" data-toggle="modal" style="padding: 6px 4px 6px 5px; margin: 4px 4px 7px 110px;">
 		                    Add New Product
@@ -27,11 +27,11 @@
 					<% end %>
  				</div>
  				<div style="height: 50%; border: 2px solid black;">
- 					<%= video_tag(["video.mp4"], :size => "362x180", :controls => true) %>
+ 					<%= video_tag(["video.mp4"], :size => "265x180", :controls => true) %>
  				</div>
  				
  			</div>
-			<div class="col-md-8" style="margin: 23px 0 0 0;">
+			<div class="col-md-9" style="margin: 23px 0 0 0;">
 				<% is_closed = false %>
 				<% i = 0 %>
 				<% @products.each do |product| %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328130937) do
+ActiveRecord::Schema.define(version: 20160415160926) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -59,6 +59,21 @@ ActiveRecord::Schema.define(version: 20160328130937) do
     t.string   "complaint"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "guardian_name"
+    t.date     "dob"
+    t.string   "gender"
+    t.string   "educational_qualification"
+    t.string   "permanent_address"
+    t.string   "present_address"
+    t.string   "marital_status"
+    t.string   "contact_no"
+    t.string   "alternate_contact_no"
+    t.string   "occupation"
+    t.string   "current_income"
+    t.string   "working_hrs"
+    t.string   "total_exp"
+    t.string   "source_of_adv"
+    t.string   "submitted_name"
   end
 
   create_table "orders", force: true do |t|
@@ -77,6 +92,15 @@ ActiveRecord::Schema.define(version: 20160328130937) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar"
+    t.integer  "sub_category_id"
+  end
+
+  create_table "sub_categories", force: true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
