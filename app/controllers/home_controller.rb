@@ -81,8 +81,8 @@ class HomeController < ApplicationController
   	@category = Category.new
   	@sub_category = SubCategory.new
   	@categories = Category.all
-  	if params[:category_id].present? && !params[:category_id].nil?
-  		@products = Product.where(:category_id => params[:category_id]) 
+  	if params[:sub_category_id].present? && !params[:sub_category_id].nil?
+  		@products = Product.where(:sub_category_id => params[:sub_category_id]) 
   	else
   		@products = []#Product.where(:category_id => @categories[0].id)
   	end

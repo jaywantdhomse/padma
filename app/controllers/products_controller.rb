@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+	@category = Category.new
+	@sub_category = SubCategory.new
   end
 
   def create
@@ -27,8 +29,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(product_params)
-    respond_with(@product)
+	if current_user.admin?
+	  @product.update(product_params)
+	end
+    redirect_to url_for(:controller => :home, :action => :product)
+    #respond_with(@product)
   end
 
   def destroy
@@ -59,6 +64,13 @@ class ProductsController < ApplicationController
 	Rails.logger.debug(params[:category_id])
 	sub_categories = SubCategory.where(:category_id => params[:category_id])
 	render :json => {:sub_categories => sub_categories}
+  end
+  
+  def delete_product
+	if current_user.admin?
+	  Product.where(:id => params[:id]).delete_all
+	end
+	redirect_to url_for(:controller => :home, :action => :product)
   end
   
   private

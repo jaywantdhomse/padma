@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
   match "show_category_products" => "products#show_category_products", via: [:get, :post]
   match "order_product" => "products#order_product", via: [:get, :post]
+  match "delete_product" => "products#delete_product", via: [:get]
   match "contact_us" => "home#contact_us", via: [:get, :post]
   match "distributor_complaint" => "home#distributor_complaint", via: [:get, :post]
   match "applicant_submit" => "home#applicant_submit", via: [:get, :post]

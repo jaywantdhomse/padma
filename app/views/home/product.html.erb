@@ -19,7 +19,7 @@
 								</div>
 								<div class="collapse" id="demo_<%= category.id %>">
 								  <% SubCategory.where(:category_id => category.id).each do |sub_category| %>
-								  <a href="javascript:;" style="background-color: grey;border:none;padding-left:30px;" class="list-group-item" ><%= sub_category.name%></a>
+								  <a href="/product?sub_category_id=<%=sub_category.id%>" style="background-color: grey;border:none;padding-left:30px;" class="list-group-item" ><%= sub_category.name%></a>
 								  <% end%>
 								</div>								
 							</div>
@@ -52,7 +52,9 @@
 										data-toggle="modal" style=""
 										data-id="<%= product.id %>" class='btn btn-primary'>View Details</button>
 							<% elsif !current_user.nil? && current_user.admin %>
-								<button onclick='remove_now(this)' data-id="data["products"][i]["id"]" class='btn btn-primary'>Remove Product</button>
+								<a href="/prouct/3" class='btn btn-primary' style="margin-bottom: 5px">Edit Product</a>
+								<a href="javascipt:;" onclick='remove_now(this)' data-id="<%= product.id %>" class='btn btn-primary'>Remove Product</a>
+								
 							<% else %>
 								<button onclick='pro_details(this)' class="portfolio-link details_product btn btn-primary"
 										data-toggle="modal" style=""
@@ -139,8 +141,14 @@
 
 <script>
 $(document).on('click',function(){
-$('.collapse').collapse('hide');
+//$('.collapse').collapse('hide');
 })
+
+function remove_now(ctrl) {
+    if(confirm("Are you sure you want to delete this product?")){
+		window.location.assign("/delete_product?id="+$(ctrl).attr("data-id"));
+	}
+}
 </script> 
 	
 	
