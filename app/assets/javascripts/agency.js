@@ -405,6 +405,71 @@ $(document).on('ready page:load', function () {
 		return false;
 	});
 	
+    
+	$("form#updateProfileForm").submit(function() {
+		var update_profile_form = $("form#updateProfileForm"); 
+        var empty_textboxes = [];
+        var non_numeric_fields = [];
+        var invalid_numeric_fields = [];
+        
+		var form_valid = true;
+		
+		$("input[type=text]", update_profile_form).each(function(){
+		   var value = $.trim($(this).val());
+		   if(value == "") {
+		        var label = get_label(this);
+		        form_valid = false;
+		        empty_textboxes.push(label);
+		   }
+		});
+		//phone number
+		$('input#contact_no', update_profile_form).each(function() {
+		    var value = $.trim($(this).val());
+		    var label = get_label(this);
+		    if(value.length > 0 && !value.match(/^[0-9]+$/)) {
+		        form_valid = false;
+		        non_numeric_fields.push(label);
+		    }else{
+		        if(value.length != 10){
+		            form_valid = false;
+		            invalid_numeric_fields.push(label);
+		        }
+		    }
+		});
+		 
+		if(form_valid == true){
+		    $.ajax({
+		         type: "POST",
+		         url: $("form#updateProfileForm").attr("action"),
+		         data: $("form#updateProfileForm").serialize(),
+		         beforeSend: function(){
+
+		         },
+		         complete: function() {           
+
+		         },
+		         success: function(data){
+		            update_profile_form.find("div#success").text("Profile updated successfully.")
+		         }
+		     });        
+		}else{
+		    $(".error_msg").text("");
+		    var new_msg = "Could not proceed with Complaint.";
+		    if (empty_textboxes.length > 0) {
+		        new_msg += "\n\nPlease provide value for following fields:\n" + empty_textboxes.join(", ") + ".";
+		    }
+		    if(invalid_numeric_fields.length > 0){
+		        new_msg += "\n\nPlease provide valid values for " + invalid_numeric_fields.join(" and ") + ".";
+		    }
+		    if (non_numeric_fields.length > 0) {
+		        new_msg += "\n\nPlease provide a valid number for " + non_numeric_fields.join(", ") + ".";
+		    }         
+		    
+		    alert(new_msg);
+		}
+		return false;
+	});    
+    
 
 	$(".forgotpassword").click(function() {
 		$("#loginModal").modal("hide");
@@ -590,8 +655,11 @@ $(".vacancy").click(function() {
 				
 									 },
 									 success: function(data){
-									 	ctrl.closest("div").find("div.order_msg").text("Order Placed Successfully.");
-									 	
+                                        if (data["update_profile"]) {
+                                            parent.location.replace(my_profile_url);
+                                        }else{
+                                            ctrl.closest("div").find("div.order_msg").text("Order Placed Successfully.");
+                                        }
 									 }
 								 });
 						});				   

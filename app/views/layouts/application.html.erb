@@ -27,6 +27,7 @@
     <!-- Custom Theme JavaScript -->
     <script>
         var root_url = <%= root_url.to_json.html_safe %>;
+		var my_profile_url = <%= my_profile_url.to_json.html_safe %>;
 		$(document).on('ready page:load', function () {	
 		  $('div.dropdown').hover(function() {
 			
@@ -94,7 +95,13 @@
 					<div class="col-lg-2 header"><a href="/contact">Contact Us</a></div>
 					<div class="col-lg-1 header">
 						<% if user_signed_in? %>
-				            <a class="logout" href="<%= destroy_user_session_url %>" >Logout</a>
+				           <div class="dropdown">
+							   <a href="#" data-toggle="dropdown" class="dropdown-toggle">Logout</a>
+							   <ul class="dropdown-menu">
+								   <li><a href="/my_profile">My Profile</a></li>
+								   <li><a class="login" href="<%= destroy_user_session_url %>" >Logout</a></li>
+							   </ul>
+						   </div>
 				        <% else %>
 				            <a class="login" href="#" >Login</a>
 				        <% end %>
@@ -132,7 +139,15 @@
 					<div class="col-lg-2 header"><a href="/contact">Contact Us</a></div>
 					<div class="col-lg-2 header">
 						<% if user_signed_in? %>
-				            <a class="login" href="<%= destroy_user_session_url %>" >Logout</a>
+						  <div class="dropdown">
+							   <a href="#" data-toggle="dropdown" class="dropdown-toggle">Logout</a>
+							   <ul class="dropdown-menu">
+								   <li><a href="/my_profile">My Profile</a></li>
+								   <li><a class="login" href="<%= destroy_user_session_url %>" >Logout</a></li>
+							   </ul>
+						   </div>						  
+						  
+				            
 				        <% else %>
 				            <a class="login" href="#" >Login</a>
 				        <% end %></div>

@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   match "applicant" => "home#applicant", via: [:get]
   match "product" => "home#product", via: [:get]
   match "category" => "home#category", via: [:get]
+  match "my_profile" => "home#my_profile", via: [:get]
+  match "update_profile" => "home#update_profile", via: [:get, :post]
   match "get_product_details" => "products#get_product_details", via: [:post]
   match "fetch_sub_categories" => 'products#fetch_sub_categories', via: [:post]
 

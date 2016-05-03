@@ -1,0 +1,113 @@
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+  
+               <div class="col-lg-12" style="margin-bottom: 10px; padding-bottom: 20px; background-color: lightskyblue; border-radius: 86px;">
+	              
+	              <h3 class="section-heading" style="text-align:center;">My Account</h3>
+				  
+				  <div class="col-md-12" style="padding-left: 258px; padding-top: 17px;">
+					<form action="update_profile" name="update_profile" id="updateProfileForm" novalidate >
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Email ID
+							</div>
+							<div class="form-group col-md-6">
+								<%= current_user.email %>
+							</div>
+						</div>                      
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								First Name
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="First Name" name="user[first_name]" class="form-control" id="first_name" value='<%= current_user.first_name %>'>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Last Name
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Last Name" name="user[last_name]" class="form-control" id="last_name" value='<%= current_user.last_name %>'>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Contact Number
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Contact Number" name="user[mob_no]" class="form-control" id="contact_no" value='<%= current_user.mob_no %>'>
+							</div>
+						</div>                        
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Address
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Address" name="user[address]" class="form-control" id="address" style="height: 60px;" value='<%= current_user.address %>'>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								City
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="City" name="user[city]" class="form-control" id="city" value='<%= current_user.city %>'>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								State
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="State" name="user[state]" class="form-control" id="state" value='<%= current_user.state %>'>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-md-2">
+								Pincode
+							</div>
+							<div class="form-group col-md-6">
+								<input type="text" data-lable="Pincode" name="user[pincode]" class="form-control" id="pincode" value='<%= current_user.pincode %>'>
+							</div>
+						</div>                        
+						<div class="col-md-8">
+							<div class="text-center">
+								<div id="success" style="color:green"></div>
+								<button style="background-color: blue;" type="submit" class="btn btn-primary">Update</button>
+							</div>
+						</div>						
+		  
+					</form>		
+				  </div>
+		
+                    <!--<div class="col-md-6">-->
+                    <!--  <img src="/assets/distri.png" style="width:100%" />-->
+                    <!--</div>-->
+               </div>
+   
+
+        
+<style>
+	.select_postion{
+		padding: 4px;
+    	width: 100%;
+	}
+	#applicant_avatar{
+		font-size: 15px;
+		height: 35px;
+		margin-left: 231px;
+	}
+
+	
+	.form-group{
+		margin-bottom:7px;
+		border-radius: 14px;
+	}
+	
+	.text-center{
+		padding-bottom:12px;
+	}
+</style>

@@ -22,6 +22,10 @@ class ApplicantMailer < ActionMailer::Base
   	@u_first_name = user.first_name
   	@u_last_name = user.last_name
   	@u_email = user.email
+  	@u_address = user.address
+  	@u_city = user.city
+  	@u_state = user.state
+  	@u_pincode = user.pincode
   	@p_name = product.name
   	@p_category_id = product.category_id
   	@p_model = product.model

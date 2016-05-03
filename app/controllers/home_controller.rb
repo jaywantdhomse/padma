@@ -88,7 +88,26 @@ class HomeController < ApplicationController
   	end
   end
   
+  def my_profile
+    if !current_user.nil?
+	  @product = Product.new
+	  @category = Category.new
+	  @sub_category = SubCategory.new
+	else
+	  redirect_to root_url
+    end
+  end
+  
+  def update_profile
+	User.find(current_user.id).update(user_params)
+	render :json => {}
+  end
+  
   private
+  
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :mob_no, :address, :city, :state, :pincode)
+  end
 
   def contact_params
     params.require(:contact_us).permit(:name, :phone, :email, :city, :address, :pincode, :message)

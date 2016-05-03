@@ -54,10 +54,16 @@ class ProductsController < ApplicationController
   end
   
   def order_product
-  	@category = Category.new
-  	product = Product.find(params["product_id"])
-  	ApplicantMailer.order_email(current_user, product).deliver
-  	render :json => {}
+	if !current_user.nil? && (current_user.address.nil? || current_user.city.nil? || current_user.state.nil? || current_user.pincode.nil?)
+	  render :json => {"update_profile" => true}	  
+    else
+	  @category = Category.new
+	  product = Product.find(params["product_id"])
+	  ApplicantMailer.order_email(current_user, product).deliver
+	  render :json => {}	  
+    end
+    
+
   end
   
   def fetch_sub_categories
