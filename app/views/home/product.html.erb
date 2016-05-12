@@ -149,6 +149,12 @@ function remove_now(ctrl) {
 		window.location.assign("/delete_product?id="+$(ctrl).attr("data-id"));
 	}
 }
+
+$(document).on('ready page:load', function () {
+	 $("div#products").addClass("selected");
+	 $("div#home").removeClass("selected");
+	 $("div#contact_us").removeClass("selected");	 
+})
 </script> 
 	
 	

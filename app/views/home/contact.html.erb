@@ -57,4 +57,12 @@
 	.form-group{
 	padding: 6px 30px 0px 30px;
 	}
-</style>        
+</style>
+
+<script>
+$(document).on('ready page:load', function () {
+	 $("div#contact_us").addClass("selected");
+	 $("div#home").removeClass("selected");
+	 $("div#products").removeClass("selected");
+});
+</script>

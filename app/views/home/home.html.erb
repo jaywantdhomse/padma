@@ -74,7 +74,14 @@ $(document).on('ready page:load', function () {
 			auto: true,
 			height: 500
 			});
-});
+     });
+     console.log("Calleddd")
+	 console.log($("div#contact_us").attr("class"))
+	 $("div#home").addClass("selected");
+	 $("div#contact_us").removeClass("selected");
+	 $("div#products").removeClass("selected");
+	 console.log($("div#contact_us").attr("class"))
+	 console.log("finish")
 </script>
 
 
