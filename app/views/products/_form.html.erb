@@ -6,7 +6,7 @@
 		<div class="text-padd"><%= f.select :category_id, Category.all.collect{ |c| [c.name, c.id] }, {}, :class => "form-control add_product_category_id", :onchange => "fetch_sub_categories(this)" %></div>
 	</div>
 	<div class="text-padd">
-		<div class="text-padd"><%= f.select :sub_category_id, Category.first.nil? ? [] : SubCategory.where(:category_id => Category.first.id), {}, :class => "form-control" %></div>
+		<div class="text-padd"><%= f.select :sub_category_id, Category.first.nil? ? [] : SubCategory.where(:category_id => Category.first.id).collect{ |c| [c.name, c.id] }, {}, :class => "form-control" %></div>
 	</div>
 	<div class="text-padd"><%= f.input :name, :placeholder => "Product Name", :input_html => { :class => "form-control" }, label: false %></div>
   	<div class="text-padd"><%= f.input :model, :placeholder => "Model of Product", :input_html => { :class => "form-control" }, label: false %></div>
