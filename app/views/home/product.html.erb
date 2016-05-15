@@ -52,7 +52,7 @@
 										data-toggle="modal" style=""
 										data-id="<%= product.id %>" class='btn btn-primary'>View Details</button>
 							<% elsif !current_user.nil? && current_user.admin %>
-								<a href="/prouct/3" class='btn btn-primary' style="margin-bottom: 5px">Edit Product</a>
+								<a href="/products/3/edit" class='btn btn-primary' style="margin-bottom: 5px">Edit Product</a>
 								<a href="javascipt:;" onclick='remove_now(this)' data-id="<%= product.id %>" class='btn btn-primary'>Remove Product</a>
 								
 							<% else %>
