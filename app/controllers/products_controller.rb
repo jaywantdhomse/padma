@@ -75,6 +75,9 @@ class ProductsController < ApplicationController
   def delete_product
 	if current_user.admin?
 	  Product.where(:id => params[:id]).delete_all
+	#  render :json => {"response" => "1"}
+	#else
+	#  render :json => {"response" => "0"}
 	end
 	redirect_to url_for(:controller => :home, :action => :product)
   end
