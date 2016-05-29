@@ -5,6 +5,9 @@ class CategoriesController < ApplicationController
   helper_method :avatar_url
 
   def index
+    @product = Product.new
+    @category = Category.new
+    @sub_category = SubCategory.new    
     @categories = Category.all
     respond_with(@categories)
   end
@@ -14,11 +17,17 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @category = Category.new
+    @sub_category = SubCategory.new    
     @category = Category.new
     respond_with(@category)
   end
 
   def edit
+    @product = Product.new
+    @category = Category.new
+    @sub_category = SubCategory.new      
   end
 
   def create

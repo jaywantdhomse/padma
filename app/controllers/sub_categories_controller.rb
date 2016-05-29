@@ -4,6 +4,9 @@ class SubCategoriesController < ApplicationController
   respond_to :html
 
   def index
+    @product = Product.new
+    @category = Category.new
+    @sub_category = SubCategory.new    
     @sub_categories = SubCategory.all
     respond_with(@sub_categories)
   end
@@ -13,6 +16,9 @@ class SubCategoriesController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @category = Category.new
+    @sub_category = SubCategory.new    
     @sub_category = SubCategory.new
     respond_with(@sub_category)
   end
