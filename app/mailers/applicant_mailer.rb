@@ -53,16 +53,22 @@ class ApplicantMailer < ActionMailer::Base
   end
   
   def distributor_complaint_email(distributor_complaint)
-  	@complaint_by = distributor_complaint.by
   	@complaint_name = distributor_complaint.name
   	@complaint_email = distributor_complaint.email
-  	@complaint_phone = distributor_complaint.phone
-  	@complaint_city = distributor_complaint.city
-  	@complaint_address = distributor_complaint.address
-  	@complaint_pincode = distributor_complaint.pincode
-  	@complaint_product = distributor_complaint.product
-  	@complaint_model = distributor_complaint.model
-  	@complaint_complaint = distributor_complaint.complaint
+  	@complaint_guardian_name = distributor_complaint.guardian_name
+  	@complaint_dob = distributor_complaint.dob
+  	@complaint_gender = distributor_complaint.gender
+  	@complaint_educational_qualification = distributor_complaint.educational_qualification
+  	@complaint_permanent_address = distributor_complaint.permanent_address
+  	@complaint_present_address = distributor_complaint.present_address
+  	@complaint_contact_no = distributor_complaint.contact_no
+  	@complaint_alternate_contact_no = distributor_complaint.alternate_contact_no
+  	@complaint_occupation = distributor_complaint.occupation
+  	@complaint_current_income = distributor_complaint.current_income
+  	@complaint_working_hrs = distributor_complaint.working_hrs
+  	@complaint_total_exp = distributor_complaint.total_exp
+  	@complaint_source_of_adv = distributor_complaint.source_of_adv
+  	@complaint_submitted_name = distributor_complaint.submitted_name
   	@from = User.where(admin: true)[0]["email"]
   	@to = User.where(admin: true)[0]["email"]
   	@distributor_complaint = distributor_complaint
