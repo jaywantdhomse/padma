@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   match "update_profile" => "home#update_profile", via: [:get, :post]
   match "get_product_details" => "products#get_product_details", via: [:post]
   match "fetch_sub_categories" => 'products#fetch_sub_categories', via: [:post]
+  match "/applicant/delete/:vacancy_id" => "vacancies#delete", via: [:get]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -23,7 +23,14 @@ class VacanciesController < ApplicationController
   def create
     @vacancy = Vacancy.new(vacancy_params)
     @vacancy.save
-    redirect_to root_url
+    redirect_to applicant_url
+  end
+  
+  def delete
+    if !current_user.nil? && current_user.admin
+      Vacancy.where(:id => params[:vacancy_id]).delete_all
+    end
+    redirect_to applicant_url
   end
 
   def update
