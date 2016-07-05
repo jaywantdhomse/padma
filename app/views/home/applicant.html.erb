@@ -73,7 +73,7 @@
 				<th>Sr No.</th>
 				<th>Post</th>
 				<th>Experience</th>
-				<th>Action</th>
+				<th>Education skills</th>
 				<% if !current_user.nil? && current_user.admin %>
 					<th>Delete</th>
 				<% end %>
@@ -86,7 +86,8 @@
 					<td><%= index %></td>
 					<td><%= vacancy.post %></td>
 					<td><%= vacancy.experience %></td>
-					<td><a href="#top" onclick="applyFunction(this);" data-post="<%= vacancy.post %>" >Apply online</a></td>
+					<td><%= vacancy.skills %></td>
+					<!--    <td><a href="#top" onclick="applyFunction(this);" data-post="<%= vacancy.post %>" >Apply online</a></td>-->
 					<% if !current_user.nil? && current_user.admin %>
 						<td><%= link_to 'Delete', "/applicant/delete/#{vacancy.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					<% end %>
