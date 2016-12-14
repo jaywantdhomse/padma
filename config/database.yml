@@ -21,7 +21,7 @@ development:
 
 production:
   <<: *default
-  adapter: pg
+  adapter: mysql2
   host: localhost
   username: root
   password: root
