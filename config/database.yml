@@ -1,6 +1,5 @@
 
 development:
-  <<: *default
   adapter: mysql2
   host: localhost
   username: root
@@ -9,7 +8,6 @@ development:
  
 
 production:
-  <<: *default
   adapter: mysql2
   host: localhost
   username: root
