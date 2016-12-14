@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'mysql2'
 gem 'therubyracer',  platforms: :ruby
 gem 'execjs'
 # Use jquery as the JavaScript library
@@ -22,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'mysql2'
+
 gem 'pg'
 gem 'devise'
 gem 'simple_form'
