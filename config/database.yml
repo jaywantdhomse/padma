@@ -17,12 +17,4 @@ development:
   username: root
   password: root
   database: padma
- 
 
-production:
-  <<: *default
-  adapter: postgresql
-  host: localhost
-  username: root
-  password: root
-  database: padma
