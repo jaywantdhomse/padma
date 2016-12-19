@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502083918) do
+ActiveRecord::Schema.define(version: 20161219142906) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160502083918) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.binary   "avatar"
+    t.binary   "avatar",      limit: 2147483647
   end
 
   create_table "contact_us", force: true do |t|
